@@ -360,6 +360,79 @@ input[type=range]{width:100%;accent-color:var(--ink)}
   *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .firma{display:block;position:fixed;right:0;bottom:0;text-align:right;color:var(--accent);opacity:.6;font:600 10px var(--body);margin-top:4px}
 }
+
+/* guía 7: una pregunta por pantalla, con el color del área */
+.tinted{background:var(--tint,#fff);border:2px solid var(--ac,#fff);transition:background .2s}
+.w-head{background:var(--ac,#fff);color:var(--at,#1E2A44);margin:-20px -20px 0;padding:14px 20px 16px;display:flex;flex-direction:column;gap:10px;flex:none;border-bottom:1px solid var(--ae,#ECE6DC);transition:background .2s}
+.w-head .wiz-top{color:inherit;font-weight:600;font-size:13px}.w-head .wiz-top h3{color:inherit}
+.w-head .btn.ghost{color:inherit}.w-head h3{font-size:22px;text-wrap:balance}
+.w-head .wiz-help{margin:0;color:inherit;font-size:14px}
+.w-head .bar{background:rgba(255,255,255,.45)}.w-head .bar i{background:var(--at,#1E2A44)}
+#wiz .tinted{min-height:min(540px,calc(100% - 8px))}
+#w-body{flex:1 0 auto;padding-top:4px;font-size:14px}
+.tinted.clashing{--ac:#FBE4DE!important;--at:#7A1F10!important;--ae:#E9B7AA!important;--tint:#FFFDFC!important}
+.tinted .big-opt[aria-pressed="true"],.tinted .chip[aria-pressed="true"]{background:var(--ac);border-color:var(--ae);color:var(--at);box-shadow:none}
+.tinted .big-opt[aria-pressed="true"] small{color:inherit}
+.tinted .chip.big{padding:11px 16px;font-size:15px}
+.tinted .days7 span{background:var(--sheet);padding:11px 0;font-size:14px}
+.tinted .days7 input:checked+span{background:var(--ac);border-color:var(--ae);color:var(--at);font-weight:600}
+.tinted .slider{background:var(--sheet);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tinted .slider .top{font-size:14px}.tinted .slider .val{font-size:22px}
+.tinted .dlg-actions{background:var(--tint)}
+.tinted #w-next{background:var(--ink);border-color:var(--ink)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.tinted .tr2{border-top:1px dashed var(--line-strong);padding-top:12px}
+.flow.eg .tag{border-style:dashed}
+.gaps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.gaps li{display:grid;grid-template-columns:92px 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.clash{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.clash li{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--sheet);font-variant-numeric:tabular-nums}
+.clash li b{flex:1 0 100%}
+.tinted .extra .row{flex-wrap:nowrap;flex:none}
+.clash span,.summary li span{display:inline-flex;align-items:center;gap:6px}
+.clash i,.summary i{width:11px;height:11px;border-radius:4px;display:block;flex:none;border:1px solid rgba(30,42,68,.15)}
+.note.warn{color:#7A1F10;font-weight:600}
+.tinted .extra{background:var(--sheet);padding:10px 12px;font-size:14px}
+.notes{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.notes .lbl{font-size:12px;color:var(--muted);margin-left:4px}
+.nt{border:1px solid var(--line-strong);border-radius:999px;background:var(--sheet);padding:6px 12px;font-size:13px;font-weight:600;display:inline-flex;gap:7px;align-items:center;white-space:nowrap}
+.nt.bad{background:#FBE4DE;border-color:#E9B7AA;color:#7A1F10}
+.nt.bad b{width:17px;height:17px;border-radius:50%;background:#7A1F10;color:#fff;display:grid;place-items:center;font-size:11px}
+.ev.bad{box-shadow:inset 0 0 0 2px #B3261E}
+.ev.bad::after{content:'!';position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#B3261E;color:#fff;font:700 10px/13px var(--body);text-align:center}
+.cal-inner.wk .ev.bad::after{width:9px;height:9px;font-size:7px;line-height:9px;top:1px;right:1px}
+.fold{border-top:1px solid var(--line);padding-top:12px}
+.fold>summary{display:flex;align-items:center;gap:8px;cursor:pointer;list-style:none;min-height:26px}
+.fold>summary::-webkit-details-marker{display:none}
+.fold>summary h2{margin:0;font:600 14px/1.2 var(--body)}
+.fold>summary::after{content:'';margin-left:auto;width:8px;height:8px;border-right:1.6px solid var(--muted);border-bottom:1.6px solid var(--muted);transform:rotate(45deg) translate(-2px,-2px);transition:transform .15s}
+.fold[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.fold>.sec{padding-top:10px}
+.welcome{display:none}
+@media (max-width:760px){
+  .w-head{margin:-16px -16px 0;padding:12px 16px 14px}
+  #wiz .tinted{min-height:min(640px,88vh);min-height:min(640px,88dvh)}
+  .tinted .dlg-actions{background:var(--tint)!important}
+  #fix .dialog{padding-bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+  .w-head h3{font-size:23px}.w-head .wiz-help{font-size:15px}
+  #wiz .dlg-actions .btn{padding-left:9px;padding-right:9px;font-size:14.5px;white-space:nowrap}
+  #wiz #w-next{padding-left:16px;padding-right:16px}
+  .notes{flex-wrap:nowrap;overflow-x:auto;flex:none;padding-bottom:2px;scrollbar-width:none}
+  .notes>*{flex:none}
+  .nt{padding:9px 13px;font-size:13.5px}
+  .fold>summary{min-height:44px}.fold>summary h2{font-size:16px}
+  .fold{padding-top:4px}
+  .panel .only-m-hide{display:none}
+  body.hello .mview,body.hello .mbar,body.hello .calendar,body.hello .notes{display:none}
+  body.hello .welcome{display:flex;flex:1;flex-direction:column;justify-content:center;gap:12px;padding:0 10px 24px}
+  .welcome h2{margin:0;font:600 34px/1.1 var(--display);letter-spacing:-.015em}
+  .welcome p{margin:0 0 10px;font-size:17px;line-height:1.45;color:var(--ink)}
+  .welcome .btn{min-height:52px;font-size:17px;border-radius:14px}
+  .welcome small{color:var(--muted);font-size:13.5px;text-align:center}
+}
+@media (max-width:360px){#wiz .dlg-actions{gap:2px}#wiz .dlg-actions .row{flex-wrap:nowrap;gap:2px}#wiz .dlg-actions .btn{font-size:13px;padding-left:6px;padding-right:6px}.tinted .extra{font-size:13px;padding:8px}.tinted .extra .btn{padding:6px 7px;font-size:12.5px}}
+@media print{.notes,.welcome{display:none!important}.ev.bad{box-shadow:none}.ev.bad::after{display:none}}
+@media (prefers-reduced-motion:reduce){.tinted,.w-head,.fold>summary::after{transition:none}}
 </style>
 </head>
 <body>
@@ -369,25 +442,22 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 <div class="app">
   <aside class="panel" id="panel" aria-label="Ajustes">
     <div class="sheet-x"><b>Ajustes</b><button class="btn ghost" id="panel-x" type="button">Cerrar</button></div>
-    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#A85128"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Arrastra en la cuadrícula para crear un bloque.</small><small class="handle"><a href="https://www.instagram.com/psicofersaras/" target="_blank" rel="noopener noreferrer">@psicofersaras</a></small></span><button class="info-btn" id="open-info" type="button" aria-label="Sobre este planner" title="Sobre este planner">i</button></div>
+    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#A85128"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Organiza tu semana y llévala a tu calendario.</small><small class="handle"><a href="https://www.instagram.com/psicofersaras/" target="_blank" rel="noopener noreferrer">@psicofersaras</a></small></span><button class="info-btn" id="open-info" type="button" aria-label="Sobre este planner" title="Sobre este planner">i</button></div>
 
     <div class="withq only-d"><button class="btn guide" id="open-guide" type="button">Guía paso a paso</button><button class="q" type="button" data-help="guia" aria-label="Cómo funciona: la guía" aria-expanded="false">?</button></div>
 
     <section class="sec">
-      <div class="hq"><h2>Calendario</h2><button class="q" type="button" data-help="calendario" aria-label="Cómo funciona: la cuadrícula" aria-expanded="false">?</button></div>
-      <div class="field"><label for="f-title">Título</label><input id="f-title" class="txt" value="Mi semana"></div>
-      <div class="field"><label for="f-sub">Subtítulo (opcional)</label><input id="f-sub" class="txt" placeholder="p. ej. semana del 24 al 30"></div>
+      <div class="withq"><button class="btn primary" id="pdf" type="button">Exportar PDF</button><button class="q" type="button" data-help="pdf" aria-label="Cómo funciona: el PDF" aria-expanded="false">?</button></div>
+      <div class="withq tipwrap only-m-hide"><button class="btn" id="open-cal" type="button" aria-describedby="tip-cal"><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.8v2.4M10.5 1.8v2.4"/></svg>Exportar a mi app de calendario</button><button class="q" type="button" data-help="ics" aria-label="Cómo funciona: exportar a mi app de calendario" aria-expanded="false">?</button>
+        <div class="tip" id="tip-cal" role="tooltip">Se descarga un archivo <b>.ics</b>, el formato estándar de calendario. Lo abren:<ul><li>Google Calendar</li><li>Apple Calendario</li><li>Microsoft Outlook</li><li>Proton Calendar</li><li>Thunderbird</li></ul>y cualquier app que importe archivos .ics.<small>Los nombres son marcas de sus titulares. Esta herramienta no tiene relación con ellas.</small></div></div>
     </section>
-
-    <section class="sec">
-      <div class="hq"><h2>Áreas</h2><button class="q" type="button" data-help="areas" aria-label="Cómo funciona: las áreas" aria-expanded="false">?</button></div>
+    <details class="fold" id="fold-areas"><summary><h2>Áreas</h2><button class="q" type="button" data-help="areas" aria-label="Cómo funciona: las áreas" aria-expanded="false">?</button></summary><div class="sec">
       <div class="areas" id="areas"></div>
       <div class="row" style="gap:6px"><button class="btn ghost" id="add-area" type="button">+ Añadir área</button><button class="btn ghost" id="swap" type="button" aria-pressed="false">Intercambiar colores</button></div>
       <p class="hint" id="swap-hint" role="status" hidden></p>
-    </section>
+    </div></details>
 
-    <section class="sec">
-      <div class="hq"><h2>Paletas</h2><button class="q" type="button" data-help="paletas" aria-label="Cómo funciona: las paletas" aria-expanded="false">?</button></div>
+    <details class="fold" id="fold-pal"><summary><h2>Paletas</h2><button class="q" type="button" data-help="paletas" aria-label="Cómo funciona: las paletas" aria-expanded="false">?</button></summary><div class="sec">
       <div class="presets" id="presets"></div>
       <div id="paledit"></div>
       <div class="withq"><button class="btn" id="random" type="button">
@@ -395,10 +465,9 @@ input[type=range]{width:100%;accent-color:var(--ink)}
         Colores aleatorios
       </button><button class="q" type="button" data-help="aleatorios" aria-label="Cómo funciona: los colores aleatorios" aria-expanded="false">?</button></div>
       <div class="withq"><button class="btn ghost" id="save-palette" type="button">Guardar estos colores</button><button class="q" type="button" data-help="guardarpaleta" aria-label="Cómo funciona: guardar los colores" aria-expanded="false">?</button></div>
-    </section>
+    </div></details>
 
-    <section class="sec">
-      <div class="hq"><h2>Vista</h2><button class="q" type="button" data-help="vista" aria-label="Cómo funciona: la vista" aria-expanded="false">?</button></div>
+    <details class="fold" id="fold-vista"><summary><h2>Vista</h2><button class="q" type="button" data-help="vista" aria-label="Cómo funciona: la vista" aria-expanded="false">?</button></summary><div class="sec">
       <div class="row" style="flex-wrap:nowrap">
         <div class="field" style="flex:1"><label for="f-from">Desde</label><select id="f-from" class="txt"></select></div>
         <div class="field" style="flex:1"><label for="f-to">Hasta</label><select id="f-to" class="txt"></select></div>
@@ -409,12 +478,10 @@ input[type=range]{width:100%;accent-color:var(--ink)}
       </div>
       <div class="field"><label for="f-zoom">Altura de las horas</label><input id="f-zoom" type="range" min="28" max="96" step="4" value="48"></div>
       <label class="check"><input type="checkbox" id="f-times" checked> Mostrar la hora en los bloques</label>
-    </section>
+    </div></details>
 
-    <section class="sec">
-      <div class="withq"><button class="btn primary" id="pdf" type="button">Exportar PDF</button><button class="q" type="button" data-help="pdf" aria-label="Cómo funciona: el PDF" aria-expanded="false">?</button></div>
-      <div class="withq tipwrap only-m-hide"><button class="btn" id="open-cal" type="button" aria-describedby="tip-cal"><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.8v2.4M10.5 1.8v2.4"/></svg>Exportar a mi app de calendario</button><button class="q" type="button" data-help="ics" aria-label="Cómo funciona: exportar a mi app de calendario" aria-expanded="false">?</button>
-        <div class="tip" id="tip-cal" role="tooltip">Se descarga un archivo <b>.ics</b>, el formato estándar de calendario. Lo abren:<ul><li>Google Calendar</li><li>Apple Calendario</li><li>Microsoft Outlook</li><li>Proton Calendar</li><li>Thunderbird</li></ul>y cualquier app que importe archivos .ics.<small>Los nombres son marcas de sus titulares. Esta herramienta no tiene relación con ellas.</small></div></div>
+
+    <section class="sec fold">
       <div class="row" style="flex-wrap:nowrap">
         <button class="btn" id="undo" type="button" style="flex:1">Deshacer</button>
         <button class="btn" id="sample" type="button" style="flex:1">Ver ejemplo</button><button class="q" type="button" data-help="deshacer" aria-label="Cómo funciona: deshacer y ver ejemplo" aria-expanded="false">?</button>
@@ -423,7 +490,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     </section>
 
     <p class="privacy">La semana no se guarda: al cerrar o recargar la pestaña, se borra. Expórtala antes de cerrar. Sin nombres ni datos clínicos dentro.</p>
-    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v6.0, 24 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
+    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v7.0, 24 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
     <div class="fb"><span>¿Tienes ideas para mejorarlo? Cuéntamelas.</span><a class="btn" id="fb-btn" href="https://ig.me/m/psicofersaras" target="_blank" rel="noopener noreferrer">Dar feedback</a></div>
   </aside>
 
@@ -431,11 +498,14 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     <div class="sheet-head">
       <div>
         <h1 id="h-title">Mi semana</h1>
-        <div class="sub" id="h-sub"></div>
       </div>
       <div class="legend" id="legend"></div>
     </div>
     <div class="mview" id="mview"><div class="seg" role="group" aria-label="Vista"><button type="button" id="mv-dia" aria-pressed="true">Día</button><button type="button" id="mv-sem" aria-pressed="false">Semana</button></div><div class="mdays" id="mdays" role="group" aria-label="Día"></div><div class="tt" id="m-title" hidden></div></div>
+    <div class="notes" id="notes" hidden></div>
+    <div class="welcome" id="welcome"><h2>Organiza tu semana</h2><p>Te hago preguntas sencillas, de una en una, y te monto la semana en bloques de color. Después la llevas al calendario de tu móvil.</p>
+      <button class="btn guide" type="button" id="wl-go">Empezar</button><button class="btn" type="button" id="wl-ex">Ver un ejemplo</button><button class="btn ghost" type="button" id="wl-hand">Prefiero hacerlo a mano</button>
+      <small>Gratis y sin cuenta.</small></div>
     <div class="calendar" id="calendar"></div>
     <div class="firma">@psicofersaras</div>
   </main>
@@ -536,13 +606,22 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 </div>
 <div class="pop" id="pop" role="tooltip" hidden></div>
 
+<!-- por colocar y choques -->
+<div class="scrim" id="fix" hidden>
+  <div class="dialog wide tinted" role="dialog" aria-modal="true" aria-labelledby="fix-h">
+    <div class="w-head"><div class="wiz-top"><h3 id="fix-h"></h3><button class="btn ghost" id="fix-x" type="button">Cerrar</button></div><p class="wiz-help" id="fix-p"></p></div>
+    <div class="wiz-body" id="fix-body"></div>
+  </div>
+</div>
 <!-- guía paso a paso -->
 <div class="scrim" id="wiz" hidden>
-  <div class="dialog wide" role="dialog" aria-modal="true" aria-labelledby="w-title">
-    <div class="wiz-top"><span id="w-step">Paso 1</span><button class="btn ghost" id="w-close" type="button">Cerrar</button></div>
-    <div class="bar"><i id="w-bar" style="width:0"></i></div>
-    <h3 id="w-title"></h3>
-    <p class="wiz-help" id="w-help"></p>
+  <div class="dialog wide tinted" role="dialog" aria-modal="true" aria-labelledby="w-title">
+    <div class="w-head">
+      <div class="wiz-top"><span id="w-step">Guía</span><button class="btn ghost" id="w-close" type="button">Cerrar</button></div>
+      <div class="bar"><i id="w-bar" style="width:0"></i></div>
+      <h3 id="w-title"></h3>
+      <p class="wiz-help" id="w-help"></p>
+    </div>
     <div class="wiz-body" id="w-body"></div>
     <div class="dlg-actions">
       <button class="btn ghost" id="w-back" type="button">Atrás</button>
@@ -579,7 +658,7 @@ const DEFAULT_AREAS=['Trabajo o estudios','Salud y deporte','Descanso y sueño',
 
 let uid=1;const nid=()=>'x'+(uid++);
 let S={
-  title:'Mi semana',sub:'',from:7,to:23,days:7,ppm:48/60,showTimes:true,preset:'Costa',
+  title:'Mi semana',sub:'',pend:[],okc:[],from:7,to:23,days:7,ppm:48/60,showTimes:true,preset:'Costa',
   areas:DEFAULT_AREAS.map((n,i)=>({id:nid(),name:n,color:BUILTIN['Costa'][i],locked:false})),
   events:[]
 };
@@ -727,8 +806,6 @@ function fillHours(){
   for(let h=1;h<=24;h++){const o=el('option',null,String(h).padStart(2,'0')+':00');o.value=h;if(h===S.to)o.selected=true;t.appendChild(o)}
 }
 function syncPanel(){
-  $('#f-title').value=S.title;$('#f-sub').value=S.sub;
-  $('#h-title').textContent=S.title||'Mi semana';$('#h-sub').textContent=S.sub;
   $('#d7').setAttribute('aria-pressed',S.days===7);$('#d5').setAttribute('aria-pressed',S.days===5);
   $('#f-zoom').value=Math.round(S.ppm*60);$('#f-times').checked=S.showTimes;fillHours();
 }
@@ -745,6 +822,7 @@ function layout(list){
 }
 /* móvil: un día cada vez, o la semana entera en pequeño */
 const phone=()=>matchMedia('screen and (max-width:760px)').matches;
+let hello=true;
 let mv={mode:'dia',d:(new Date().getDay()+6)%7},printing=false,PPM=S.ppm;
 function renderMobile(){
   if(mv.d>=S.days)mv.d=0;const one=mv.mode==='dia';
@@ -754,7 +832,7 @@ function renderMobile(){
   $('#mbar').classList.toggle('empty-week',!S.events.length);
 }
 function renderCal(){
-  const M=phone()&&!printing,one=M&&mv.mode==='dia',wk=M&&!one;if(M)renderMobile();
+  const M=phone()&&!printing,one=M&&mv.mode==='dia',wk=M&&!one;if(M)renderMobile();document.body.classList.toggle('hello',M&&hello&&!S.events.length&&!(S.pend||[]).length);renderNotes();const bad=clashIds();
   const cal=$('#calendar'),keep=cal.scrollTop;cal.innerHTML='';
   const days=[];for(let d=0;d<S.days;d++)if(!one||d===mv.d)days.push(d);
   const nd=days.length,from=S.from*60,to=Math.max(S.to,S.from+1)*60;
@@ -772,11 +850,11 @@ function renderCal(){
     const col=el('div','daycol');col.dataset.day=d;col.style.height=H+'px';
     for(let m=from+30;m<to;m+=30){if(wk&&m%60)continue;const ln=el('div','hline'+(m%60?' half':''));ln.style.top=(m-from)*PPM+'px';col.appendChild(ln)}
     const evs=S.events.filter(e=>e.day===d&&e.end>from&&e.start<to);layout(evs);
-    evs.forEach(e=>col.appendChild(evNode(e,from,to,wk)));
+    evs.forEach(e=>{const n=evNode(e,from,to,wk);if(bad.has(e.id)){n.classList.add('bad');n.title+=' · coincide con otra cosa'}col.appendChild(n)});
     inner.appendChild(col);
   });
   cal.appendChild(inner);
-  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>La semana está en blanco</b>Móntala con unas preguntas'+(wk?'.':', o elige un área y '+(matchMedia('(pointer:coarse)').matches?'mantén pulsado y arrastra':'arrastra')+' en la cuadrícula.')+'<br><button class="btn guide go" type="button">Guía paso a paso</button></div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
+  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>Organiza tu semana</b>Te hago preguntas sencillas, de una en una, y te monto la semana. O '+(matchMedia('(pointer:coarse)').matches?'mantén pulsado y arrastra':'arrastra')+' en la cuadrícula.<br><button class="btn guide go" type="button">Empezar</button></div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
   cal.scrollTop=keep;
 }
 function evNode(e,from,to,wk){
@@ -893,24 +971,65 @@ $('#e-cancel').addEventListener('click',cancelEditor);
 $('#scrim').addEventListener('pointerdown',ev=>{if(ev.target.id==='scrim')cancelEditor()});
 $('#e-title').addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();saveEditor()}});
 
-/* ---------- guía paso a paso ---------- */
-const ACTS={trabajo:{name:'Trabajo',def:[['09:00','14:00'],['16:00','19:00']],irrDef:['09:00','14:00']},
-            estudio:{name:'Estudio',def:[['17:00','19:00']],irrDef:['17:00','19:00']},
-            clases:{name:'Clases',def:[['09:00','14:00']],irrDef:['09:00','14:00']}};
-const ORDER=['trabajo','clases','estudio'];
-const mkAct=k=>({sched:'fijo',days:k==='estudio'?[0,1,2,3]:[0,1,2,3,4],tramos:ACTS[k].def.map(([s,e])=>({s,e})),
-  irr:DAYS.map((_,i)=>({on:i<5,tramos:[{s:ACTS[k].irrDef[0],e:ACTS[k].irrDef[1]}]})),commute:0,homeBreak:false,off:false,place:'casa'});
-const W0=()=>({bed:'23:30',wake:'07:30',weekendDiff:false,wkBed:'00:30',wkWake:'09:30',wind:30,
-  acts:[],none:false,A:{trabajo:mkAct('trabajo'),estudio:mkAct('estudio'),clases:mkAct('clases')},
-  meals:{breakfast:{t:'08:00',len:20,on:true},lunch:{t:'14:30',len:60,on:true},dinner:{t:'21:00',len:45,on:true}},
-  exDays:[],exTime:'19:00',exDur:60,exSched:'fijo',exIrr:DAYS.map(()=>({on:false,tramos:[{s:'19:00',e:'20:00'}]})),
-  extras:[],citas:[],viajes:[],tripWork:false,mode:'replace'});
-let W=W0(),wStep=0,flush=null;
+/* ---------- guía paso a paso ----------
+   Regla: una pregunta por pantalla y, como mucho, tres toques para contestarla (marcar días y ejemplos aparte).
+   Cada parte empieza con un sí o no y la ventana lleva el color de su área. */
+const ACTS={trabajo:{name:'Trabajo',def:['09:00','14:00'],def2:['16:00','19:00']},
+            estudio:{name:'Estudio',def:['17:00','19:00'],def2:['20:00','21:00']},
+            clases:{name:'Clases',def:['09:00','14:00'],def2:['16:00','18:00']}};
+const mkAct=k=>({yes:null,sched:null,days:k==='estudio'?[0,1,2,3]:[0,1,2,3,4],tr:{s:ACTS[k].def[0],e:ACTS[k].def[1]},tr2:{s:ACTS[k].def2[0],e:ACTS[k].def2[1]},split:null,
+  irr:DAYS.map(()=>({touched:false,tramos:[{s:ACTS[k].def[0],e:ACTS[k].def[1]}]})),go:null,commute:20,homeBreak:null});
+/* partes de la guía: nombre y área de la que toma el color (null = sin color) */
+const SEC={sueno:['Sueño',2],trabajo:['Trabajo',0],estudios:['Estudios',0],comidas:['Comidas',6],cocinar:['Cocinar',6],salud:['Citas de salud',1],viajes:['Viajes',4],
+  gente:['Ver a gente',3],casa:['Casa y recados',5],huecos:['Tus huecos',null],estudios2:['Estudios',0],ejercicio:['Ejercicio',1],ocio:['Ocio',4],mio:['Tiempo para ti',6],fin:['Repaso',null]};
+const SECS=Object.keys(SEC);
+const FLEX={
+  salud:{q:'¿Tienes médico o alguna cita de salud esta semana?',ex:['Médico','Dentista','Fisio','Análisis o pruebas','Psicólogo','Vacuna','Acompañar a alguien'],dur:60,hueco:false,rep:null,later:'Citas de salud'},
+  viajes:{q:'¿Tienes algún viaje o día fuera?',ex:['Viaje','Escapada','Día fuera','Visitar a la familia'],later:'Viaje',rep:null},
+  gente:{q:'¿Has quedado o quieres quedar con alguien?',ex:['Quedar con una amiga','Quedar con un amigo','Café con alguien','Comida familiar','Plan en pareja','Plan con los niños','Cumpleaños','Llamar a alguien'],dur:90,hueco:true,rep:false,later:'Ver a alguien'},
+  casa:{q:'¿Tienes recados o tareas de casa?',ex:['Hacer la compra','Limpiar','Lavadora','Llevar a los niños','Reunión del cole','Banco o papeleo','Taller o ITV','Recoger un paquete','Cocinar para varios días'],dur:60,hueco:true,rep:false,later:'Casa y recados'},
+  ejercicio:{q:'¿Quieres moverte o hacer ejercicio esta semana?',ex:['Caminar','Gimnasio','Correr','Yoga o estirar','Nadar','Bici','Bailar','Deporte en equipo'],dur:60,hueco:true,rep:true,later:'Ejercicio'},
+  ocio:{q:'¿Quieres un rato para algo que te guste?',ex:['Leer','Serie o peli','Música','Videojuegos','Salir a cenar','Cine o concierto','Una afición','Dar un paseo'],dur:60,hueco:true,rep:false,later:'Ocio'},
+  mio:{q:'¿Quieres un rato para ti?',ex:['Un rato a solas','Siesta','Meditar','Escribir','Baño tranquilo','Peluquería','No hacer nada'],dur:30,hueco:true,rep:false,later:'Un rato para ti'}};
+const FKEYS=Object.keys(FLEX);
+const MEALS=[['breakfast','Desayuno','el desayuno'],['lunch','Comida','la comida'],['dinner','Cena','la cena']];
+let itN=0;
+const mkItem=(sec,title)=>{const F=FLEX[sec]||{dur:60,rep:true};return{id:'it'+(++itN),sec,title,mode:sec==='viajes'?'se':null,days:[],same:null,s:sec==='viajes'?'10:00':sec==='salud'?'10:00':'18:00',e:'20:00',dur:F.dur||60,per:{},rep:!!F.rep,times:null,hdur:null,pref:null,picks:null}};
+const W0=()=>({mode:null,sleepYes:null,bed:'23:30',wake:'07:30',wkd:null,wkBed:'00:30',wkWake:'09:30',windYes:null,wind:30,windSet:false,
+  A:{trabajo:mkAct('trabajo'),estudio:mkAct('estudio'),clases:mkAct('clases')},place:null,tripWork:null,
+  mealsYes:null,meals:{breakfast:{t:'08:00',len:20,on:true},lunch:{t:'14:30',len:60,on:true},dinner:{t:'21:00',len:45,on:true}},
+  cookYes:null,cookWhat:null,cook:{lunch:{len:null,days:[0,1,2,3,4,5,6]},dinner:{len:null,days:[0,1,2,3,4,5,6]}},
+  it:Object.fromEntries(FKEYS.map(k=>[k,{yes:null,later:false,list:[]}])),est:mkItem('estudios','Estudio'),
+  moves:{},okc:[],pend:[],done:false});
+let W=W0(),wKey='intro',wIdx=0,flush=null,resume=false,drawnAt=0;
 
+/* ---------- piezas ---------- */
+const low=t=>t.charAt(0).toLowerCase()+t.slice(1);
+const dayList=ds=>{const n=ds.slice().sort((a,b)=>a-b).map((d,i)=>i?low(DAYS[d]):DAYS[d]);return n.length<2?n.join(''):n.slice(0,-1).join(', ')+' y '+n[n.length-1]};
 function tInput(id,val,on){const i=el('input','txt');i.type='time';i.step=300;i.id=id;i.value=val;i.addEventListener('change',()=>on(i.value));return i}
 function fieldW(label,input){const f=el('div','field');const l=el('label',null,label);l.htmlFor=input.id;f.append(l,input);return f}
 function segW(opts,val,on){const g=el('div','seg');g.setAttribute('role','group');opts.forEach(([v,t])=>{const b=el('button',null,t);b.type='button';b.setAttribute('aria-pressed',v===val);b.addEventListener('click',()=>{on(v);g.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true')});g.appendChild(b)});return g}
-function daysW(prefix,arr,on){const box=el('div','days7');let cur=arr.slice();for(let d=0;d<7;d++){const l=el('label');const i=el('input');i.type='checkbox';i.id=prefix+d;i.checked=cur.includes(d);i.addEventListener('change',()=>{const s=new Set(cur);i.checked?s.add(d):s.delete(d);cur=[...s].sort((a,b)=>a-b);on(cur)});const sp=el('span',null,SHORT[d]);sp.title=DAYS[d];l.append(i,sp);box.appendChild(l)}return box}
+function daysW(prefix,arr,on){const box=el('div','days7');let cur=arr.slice();for(let d=0;d<7;d++){const l=el('label');const i=el('input');i.type='checkbox';i.id=prefix+d;i.checked=cur.includes(d);i.setAttribute('aria-label',DAYS[d]);i.addEventListener('change',()=>{const s=new Set(cur);i.checked?s.add(d):s.delete(d);cur=[...s].sort((a,b)=>a-b);on(cur)});const sp=el('span',null,SHORT[d]);sp.title=DAYS[d];l.append(i,sp);box.appendChild(l)}return box}
+/* días, con atajos de un toque */
+function daysQ(b,prefix,get,set){
+  const box=el('div','wiz-body'),msg=el('p','hint');
+  const draw=()=>{box.innerHTML='';const ch=el('div','chips');
+    [['De lunes a viernes',[0,1,2,3,4]],['Todos los días',[0,1,2,3,4,5,6]],['Fin de semana',[5,6]]].forEach(([t,a])=>{const c=el('button','chip big',t);c.type='button';c.setAttribute('aria-pressed',String(get())===String(a));c.addEventListener('click',()=>{set(a.slice());draw()});ch.appendChild(c)});
+    box.append(daysW(prefix,get(),v=>{set(v);msg.textContent='';draw()}),ch)};
+  draw();b.append(box,msg);
+  flush=strict=>{if(strict&&!get().length){msg.textContent='Marca al menos un día.';return false}return true};
+}
+/* una respuesta = un toque, y pasa sola a la pantalla siguiente */
+const ready=()=>performance.now()-drawnAt>230;
+function choiceW(b,opts,val,on,cls){
+  const g=el('div',cls||'opts');g.setAttribute('role','group');
+  opts.forEach(([v,t,sub])=>{const x=cls?el('button','chip big',t):bigOpt('button',t,sub);x.type='button';x.setAttribute('aria-pressed',v===val);
+    x.addEventListener('click',()=>{if(!ready())return;drawnAt=performance.now()+1e6;g.querySelectorAll('button').forEach(z=>z.setAttribute('aria-pressed','false'));x.setAttribute('aria-pressed','true');on(v);setTimeout(adv,130)});g.appendChild(x)});
+  b.appendChild(g);
+}
+const YN=[['si','Sí'],['no','No']];
+const durPick=(b,list,val,on)=>choiceW(b,list.map(m=>[m,fmtDur(m)]),val,on,'chips');
+function tagsW(b,list){const r=el('div','flow eg');r.appendChild(el('span','arr','Por ejemplo:'));list.forEach(t=>r.appendChild(el('span','tag',t)));b.appendChild(r)}
 function pair(a,b){const r=el('div','row pair');r.style.flexWrap='nowrap';a.style.flex='1';b.style.flex='1';r.append(a,b);return r}
 function sliderW(id,label,min,max,step,val,on,zeroText){
   const w=el('div','slider');const top=el('div','top');const l=el('label',null,label);l.htmlFor=id;const v=el('span','val');
@@ -919,13 +1038,15 @@ function sliderW(id,label,min,max,step,val,on,zeroText){
   r.addEventListener('input',()=>{show(+r.value);on(+r.value)});
   top.append(l,v);w.append(top,stepBar(r));return w;
 }
-/* horas en las que la persona está despierta, según lo que ha puesto en «Tu sueño» (para limitar las barras) */
+/* horas en las que la persona está despierta, según lo que ha puesto en «Sueño» (para limitar las barras) */
+const sleepOn=()=>W.sleepYes==='si',windOf=()=>W.windYes==='si'?W.wind:0,wkdOn=()=>W.wkd==='si';
 function waking(){
+  if(!sleepOn())return[0,1425];
   const P=parseT,bedN=t=>{const x=P(t);return x==null?null:(x<720?x+1440:x)};
   let lo=P(W.wake),hi=bedN(W.bed);
-  if(W.weekendDiff){const wl=P(W.wkWake),wh=bedN(W.wkBed);if(wl!=null&&lo!=null)lo=Math.min(lo,wl);if(wh!=null&&hi!=null)hi=Math.max(hi,wh)}
+  if(wkdOn()){const wl=P(W.wkWake),wh=bedN(W.wkBed);if(wl!=null&&lo!=null)lo=Math.min(lo,wl);if(wh!=null&&hi!=null)hi=Math.max(hi,wh)}
   if(lo==null||hi==null)return[0,1425];
-  hi=Math.min(1425,Math.floor((hi-(W.wind||0))/15)*15);lo=Math.max(0,Math.ceil(lo/15)*15);
+  hi=Math.min(1425,Math.floor((hi-windOf())/15)*15);lo=Math.max(0,Math.ceil(lo/15)*15);
   return hi-lo<60?[0,1425]:[lo,hi];
 }
 const wRange=(a,b)=>{const[lo,hi]=waking();let x=Math.max(a,lo),y=Math.min(b,hi);return y-x<30?[lo,hi]:[x,y]};
@@ -942,262 +1063,422 @@ function stepBar(r){
   const w=el('div','stepbar');const mk=(t,d,n)=>{const b=el('button','stp',t);b.type='button';b.tabIndex=-1;b.setAttribute('aria-label',n);b.addEventListener('click',()=>{const v=+r.value+d*(+r.step||1);r.value=Math.max(+r.min,Math.min(+r.max,v));r.dispatchEvent(new Event('input',{bubbles:true}))});return b};
   w.append(mk('−',-1,'Menos'),r,mk('+',1,'Más'));return w;
 }
-function timeRow(id,label,val,min,max,on){
-  const r=el('div','tsl-row');const l=el('label',null,label);l.htmlFor=id;
-  const i=el('input');i.type='range';i.id=id;i.min=min;i.max=max;i.step=15;
-  const m=parseT(val);i.value=Math.max(min,Math.min(max,m==null?min:m));
-  const v=el('span','val',fmt(+i.value));
-  i.addEventListener('input',()=>{v.textContent=fmt(+i.value);on(+i.value)});
-  r.append(l,stepBar(i),v);return{r,i,v};
+/* empieza y acaba: dos barras que no se cruzan */
+function spanW(b,id,t,lo,hi,on){
+  let s0=parseT(t.s),e0=parseT(t.e);s0=Math.max(lo,Math.min(hi-15,s0==null?lo:s0));e0=Math.max(s0+15,Math.min(hi,e0==null?s0+60:e0));t.s=fmt(s0);t.e=fmt(e0);
+  let A,B;
+  A=tSlider(id+'s','Empieza',t.s,lo,hi-15,v=>{t.s=v;const s=parseT(v);if(parseT(t.e)<s+15){t.e=fmt(s+15);B&&B.set(s+15)}on&&on()});
+  B=tSlider(id+'e','Acaba',t.e,lo+15,hi,v=>{t.e=v;const e=parseT(v);if(parseT(t.s)>e-15){t.s=fmt(e-15);A.set(e-15)}on&&on()});
+  b.append(A,B);
 }
-function tramosW(prefix,list,onChange,slider=true){
-  const box=el('div',slider?'tslw':'tramos');
-  const draw=()=>{box.innerHTML='';
-    list.forEach((t,k)=>{
-      if(slider){
-        const[lo,hi]=waking();let s0=parseT(t.s),e0=parseT(t.e);s0=Math.max(lo,Math.min(hi-15,s0==null?lo:s0));e0=Math.max(s0+15,Math.min(hi,e0==null?s0+60:e0));t.s=fmt(s0);t.e=fmt(e0);
-        const g=el('div','tsl');
-        if(list.length>1){const h=el('div','tsl-h');h.appendChild(el('span',null,'Tramo '+(k+1)));const dl=el('button','btn ghost small','Quitar');dl.type='button';dl.addEventListener('click',()=>{list.splice(k,1);draw();onChange&&onChange()});h.appendChild(dl);g.appendChild(h)}
-        let A1,B1;
-        A1=timeRow(prefix+'s'+k,'Empieza',t.s,lo,hi-15,m=>{t.s=fmt(m);const e=parseT(t.e);if(e==null||e<m+15){t.e=fmt(m+15);B1.i.value=m+15;B1.v.textContent=t.e}onChange&&onChange()});
-        B1=timeRow(prefix+'e'+k,'Acaba',t.e,lo+15,hi,m=>{t.e=fmt(m);const s0=parseT(t.s);if(s0==null||s0>m-15){t.s=fmt(m-15);A1.i.value=m-15;A1.v.textContent=t.s}onChange&&onChange()});
-        g.append(A1.r,B1.r);box.appendChild(g);return;
-      }
-      const r=el('div','tramo');
-      const s=tInput(prefix+'s'+k,t.s,v=>{t.s=v;onChange&&onChange()});s.setAttribute('aria-label','Tramo '+(k+1)+', empieza');
-      const e=tInput(prefix+'e'+k,t.e,v=>{t.e=v;onChange&&onChange()});e.setAttribute('aria-label','Tramo '+(k+1)+', acaba');
-      const del=el('button','icon-btn');del.type='button';del.innerHTML=xSvg;del.title='Quitar tramo';del.disabled=list.length<2;del.style.visibility=list.length<2?'hidden':'visible';
-      del.addEventListener('click',()=>{list.splice(k,1);draw();onChange&&onChange()});
-      r.append(s,el('span','a','a'),e,del);box.appendChild(r)});
-    const add=el('button','btn ghost small',list.length?'+ Añadir otro tramo (p. ej. por la tarde)':'+ Añadir tramo');add.type='button';add.style.alignSelf='flex-start';
-    add.addEventListener('click',()=>{const last=list[list.length-1];const st=last?Math.min(22*60,(parseT(last.e)||0)+120):9*60;list.push({s:fmt(st),e:fmt(Math.min(1425,st+180))});draw();onChange&&onChange()});
-    box.appendChild(add)};
-  draw();return box;
+function tramosW(b,id,list,on){
+  const box=el('div','wiz-body');
+  const draw=()=>{box.innerHTML='';const[lo,hi]=waking();
+    list.forEach((t,k)=>{const g=el('div','wiz-body'+(k?' tr2':''));
+      if(k){const h=el('div','tsl-h');h.appendChild(el('span',null,'Segunda parte'));const dl=el('button','btn ghost small','Quitar');dl.type='button';dl.addEventListener('click',()=>{list.splice(k,1);on&&on();draw()});h.appendChild(dl);g.appendChild(h)}
+      spanW(g,id+k,t,lo,hi,on);box.appendChild(g)});
+    if(list.length<2){const a=el('button','btn ghost small','+ Ese día tengo otra parte');a.type='button';a.style.alignSelf='flex-start';a.addEventListener('click',()=>{const st=Math.min(hi-60,parseT(list[0].e)+120);list.push({s:fmt(st),e:fmt(Math.min(hi,st+180))});on&&on();draw()});box.appendChild(a)}};
+  draw();b.appendChild(box);
 }
-const maxTramos=a=>a.sched==='fijo'?a.tramos.length:Math.max(0,...a.irr.filter(x=>x.on).map(x=>x.tramos.length));
 
-const TXT={
-  trabajo:{t:'¿Cuándo trabajas?',h:'Pon la hora real a la que empiezas a trabajar. Después te pregunto por el trayecto.'},
-  clases:{t:'¿Cuándo son tus clases?',h:'Pon la hora real a la que empieza la clase. Después te pregunto por el trayecto.'},
-  estudio:{t:'¿Cuándo estudias por tu cuenta?',h:'Las horas en que estudias de verdad. Después te pregunto dónde.'}};
-const SCHED=[['fijo','Igual cada día'],['irregular','Cambia según el día'],['semanal','Cambia cada semana']];
-const SCHED_H={fijo:'Las mismas horas en todos los días que marques.',
-  irregular:'Cada día tiene su horario y se repite cada semana. Marca los días y mueve las barras.',
-  semanal:'Pon el horario de la semana que estás montando. Solo se apunta esa semana; la próxima vuelves a abrir la guía.'};
-function commuteUI(b,k,zero){
-  const a=W.A[k];
-  const hb=el('label','check');const i=el('input');i.type='checkbox';i.id='w-'+k+'hb';i.checked=a.homeBreak;i.addEventListener('change',()=>a.homeBreak=i.checked);
-  hb.append(i,document.createTextNode(' En la pausa entre tramos vuelvo a casa'));
-  const upd=()=>{hb.hidden=!(a.commute>0&&maxTramos(a)>1)};
-  b.appendChild(sliderW('w-'+k+'c','Trayecto',0,180,5,a.commute,v=>{a.commute=v;upd()},zero));b.appendChild(hb);upd();
+/* ---------- huecos libres ---------- */
+/* ratos sin nada en un día, según los bloques que hay */
+function freeGaps(evs,d){
+  const sl=evs.some(e=>e.title==='Dormir');let lo=sl?0:480,hi=sl?1440:1320;
+  const busy=evs.filter(e=>e.day===d).map(e=>[e.start,e.end]).sort((a,b)=>a[0]-b[0]);const out=[];let c=lo;
+  busy.forEach(([s,e])=>{if(s>c)out.push([c,Math.min(s,hi)]);c=Math.max(c,e)});if(c<hi)out.push([c,hi]);
+  return out.filter(([s,e])=>e-s>=15);
 }
-function actSteps(k){
-  const a=W.A[k],T=TXT[k];
-  const hor={t:T.t,h:T.h,r(b){
-    const main=el('div','wiz-body');const box=el('div','wiz-body');
+/* horas de inicio posibles para algo de «dur» minutos. Deja 30 min tras levantarse y, si es ejercicio, 1 h después de comer o cenar */
+function slots(evs,d,dur,pref,ex){
+  const day=evs.filter(e=>e.day===d),out=[];
+  freeGaps(evs,d).forEach(([gs,ge])=>{
+    let s=gs;if(day.some(e=>e.title==='Dormir'&&e.end===gs))s+=30;
+    if(ex)day.forEach(e=>{if((e.title==='Comida'||e.title==='Cena')&&s<e.end+60&&ge>e.end)s=Math.max(s,e.end+60)});
+    s=Math.ceil(s/15)*15;
+    for(;s+dur<=ge;s+=30){if(pref==='m'&&s>=840)break;if(pref==='t'&&s<840)continue;out.push(s)}
+  });
+  const good=out.filter(s=>s>=480&&s+dur<=1350);return good.length||ex?good:out;
+}
+const clash1=(evs,d,s,e,skip)=>evs.some(x=>x!==skip&&x.day===d&&x.start<e&&x.end>s);
+/* n huecos repartidos por la semana */
+function propose(evs,n,dur,pref,ex){
+  const av=[];for(let d=0;d<7;d++){const s=slots(evs,d,dur,pref,ex);if(s.length)av.push({d,s:s[0],free:freeGaps(evs,d).reduce((t,[a,b])=>t+b-a,0)})}
+  if(n>=av.length)return av.map(({d,s})=>({d,s}));
+  if(n===1){const x=av.slice().sort((a,b)=>b.free-a.free)[0];return[{d:x.d,s:x.s}]}
+  const out=[];for(let i=0;i<n;i++){const x=av[Math.floor((i+.5)*av.length/n)];out.push({d:x.d,s:x.s})}return out;
+}
+/* todas las opciones, para «Otro hueco» */
+function allSlots(evs,dur,pref,ex){
+  const by=[];for(let d=0;d<7;d++){const s=slots(evs,d,dur,pref,ex),p=[];s.forEach(x=>{if(!p.length||x-p[p.length-1]>=Math.max(dur,60))p.push(x)});by.push(p.slice(0,4))}
+  const out=[];for(let k=0;k<4;k++)by.forEach((p,d)=>{if(p[k]!=null)out.push({d,s:p[k]})});return out;
+}
+const slotTxt=(x,dur)=>DAYS[x.d]+', '+fmt(x.s)+'–'+fmtEnd(x.s+dur);
+
+/* ---------- choques de horario ---------- */
+const RIGID={viajes:9,salud:8,trabajo:7,clases:7,trayecto:7,dormir:6,gente:5,estudio:4,comida:4,cocinar:3,casa:2,ejercicio:2,ocio:1,mio:1};
+const SRCSEC={dormir:'sueno',trabajo:'trabajo',trayecto:'estudios',clases:'estudios',estudio:'estudios',comida:'comidas',cocinar:'cocinar'};
+const rig=e=>RIGID[e.src]||(e.title==='Dormir'?6:3);
+const evName=e=>e.title||area(e.area).name||'Sin nombre';
+const CK=(a,b)=>[evName(a),evName(b)].sort().join('|');
+function clashes(evs,okc){
+  const m=new Map();
+  for(let d=0;d<7;d++){const L=evs.filter(e=>e.day===d&&!e._ghost&&e.title!=='Desconectar').sort((a,b)=>a.start-b.start);
+    for(let i=0;i<L.length;i++)for(let j=i+1;j<L.length&&L[j].start<L[i].end;j++){
+      const x=L[i],y=L[j];if(evName(x)===evName(y))continue;const k=CK(x,y);if((okc||[]).includes(k))continue;
+      const[A,B]=rig(x)>=rig(y)?[x,y]:[y,x];
+      if(!m.has(k))m.set(k,{key:k,a:evName(A),b:evName(B),pairs:[]});
+      const g=m.get(k);g.pairs.push(evName(A)===g.a?{A,B}:{A:B,B:A});
+    }}
+  return[...m.values()];
+}
+/* el trabajo, las clases, las comidas y cocinar no se cambian de día */
+const SAMEDAY=['trabajo','clases','trayecto','comida','cocinar'];
+/* busca sitio nuevo para una lista de bloques: primero el mismo día, luego los demás */
+function planMove(evs,list){
+  const cur=evs.filter(e=>!list.includes(e)),res=[];
+  list.forEach(e=>{const dur=e.end-e.start,ex=e.src==='ejercicio';let hit=null;
+    for(let k=0;k<(SAMEDAY.includes(e.src)?1:7)&&!hit;k++){const d=(e.day+k)%7;if(k&&(cur.some(x=>x.day===d&&x.title===e.title)||list.some(x=>x!==e&&x.day===d)))continue;
+      const s=slots(cur,d,dur,null,ex).filter(x=>e.src==='cocinar'?x+dur<=e.end:e.src==='comida'?Math.abs(x-e.start)<=150:true);if(s.length){const near=s.slice().sort((a,b)=>Math.abs(a-e.start)-Math.abs(b-e.start))[0];hit={d,s:near,e:near+dur}}}
+    if(hit)cur.push(Object.assign({},e,{day:hit.d,start:hit.s,end:hit.e}));res.push({ev:e,to:hit})});
+  return res;
+}
+const uniq=a=>[...new Set(a)];
+/* pinta un choque y sus salidas. api: evs(), set(bloque, [{d,s,e}]), pend(bloque), ok(clave), then() */
+function clashUI(b,g,api){
+  const evs=api.evs(),days=uniq(g.pairs.map(p=>p.A.day));
+  const ul=el('ul','clash'),rows=new Map();g.pairs.forEach(({A,B})=>{const k=[A.start,A.end,B.start,B.end].join();if(!rows.has(k))rows.set(k,{A,B,d:[]});rows.get(k).d.push(A.day)});
+  [...rows.values()].forEach(({A,B,d})=>{const li=el('li');li.appendChild(el('b',null,uniq(d).length===7?'Todos los días':dayList(uniq(d))));[A,B].forEach(x=>{const s=el('span');const i=el('i');i.style.background=area(x.area).color;i.style.borderColor=edge(area(x.area).color);s.append(i,document.createTextNode(evName(x)+' '+fmt(x.start)+'–'+fmtEnd(x.end)));li.appendChild(s)});ul.appendChild(li)});b.appendChild(ul);
+  const box=el('div','opts');b.appendChild(box);
+  const act=(t,sub,fn,main)=>{const x=bigOpt('button',t,sub,main);x.addEventListener('click',()=>{if(!ready())return;fn();api.then()});box.appendChild(x)};
+  const Bs=uniq(g.pairs.map(p=>p.B)),As=uniq(g.pairs.map(p=>p.A)),q=t=>'«'+t+'»';
+  const mv=(list,name,main,partial)=>{const pl=planMove(evs,list),ok=pl.filter(x=>x.to);if(!ok.length||(!partial&&ok.length<pl.length))return false;
+    const sub=ok.map(x=>DAYS[x.to.d]+' '+fmt(x.to.s)).join(' · ')+(ok.length<pl.length?' · '+(pl.length-ok.length)+' para luego, no queda hueco':'');
+    act('Mover '+q(name)+' a un hueco libre',sub,()=>{api.start&&api.start();ok.forEach(x=>api.set(x.ev,[x.to]));pl.filter(x=>!x.to).forEach(x=>{api.set(x.ev,[]);api.pend(x.ev)})},main);return true};
+  const isSl=g.b==='Dormir',cutable=isSl||Bs.every(x=>['trabajo','clases','estudio','cocinar'].includes(x.src)&&x.title!=='Trayecto');
+  const cuts=Bs.map(x=>{let parts=[[x.start,x.end]];g.pairs.filter(p=>p.B===x).forEach(({A})=>{parts=parts.flatMap(([s,e])=>A.end<=s||A.start>=e?[[s,e]]:[[s,A.start],[A.end,e]].filter(([u,v])=>v-u>=15))});return parts});
+  const isWork=cutable&&cuts.every(p=>p.length);
+  if(isWork)act('Recortar '+q(g.b),isSl?'Esos días duermes menos':'Le quita solo el rato que coincide',()=>{api.start&&api.start();Bs.forEach((x,i)=>api.set(x,cuts[i].map(([s,e])=>({d:x.day,s,e}))))},true);
+  const movedB=!isSl&&mv(Bs,g.b,!isWork,!Bs.every(x=>SAMEDAY.includes(x.src)));
+  const fixedA=As.every(x=>['viajes','salud','dormir'].includes(x.src)||x.title==='Dormir'||x.title==='Trayecto');
+  if(!fixedA&&!isSl)mv(As,g.a,false,false);
+  const Ts=isSl?As:Bs,tn=isSl?g.a:g.b;
+  const x=bigOpt('button','Elegir otra hora para '+q(tn));const ed=el('div','box');ed.hidden=true;x.setAttribute('aria-expanded','false');
+  x.addEventListener('click',()=>{ed.hidden=!ed.hidden;x.setAttribute('aria-expanded',!ed.hidden);if(!ed.hidden)ed.scrollIntoView({block:'nearest'})});
+  const dur=Math.max(...Ts.map(z=>z.end-z.start));let nt=fmt(Ts[0].start);
+  const warn=el('p','hint');const chk=()=>{const s=parseT(nt);const bad=Ts.filter(z=>evs.some(y=>y!==z&&y.title!=='Desconectar'&&y.day===z.day&&y.start<s+(z.end-z.start)&&y.end>s));warn.textContent=bad.length?'A esa hora sigue ocupado: '+low(dayList(uniq(bad.map(z=>z.day))))+'.':'A esa hora está libre.'};
+  ed.appendChild(tSlider('cl-t','Empieza',nt,0,Math.max(15,1440-Math.ceil(dur/15)*15),v=>{nt=v;chk()}));chk();ed.appendChild(warn);
+  const sv=el('button','btn','Poner a esta hora');sv.type='button';sv.addEventListener('click',()=>{api.start&&api.start();const s=parseT(nt);Ts.forEach(z=>api.set(z,[{d:z.day,s,e:s+(z.end-z.start)}]));api.then()});ed.appendChild(sv);box.append(x,ed);
+  act('Quitar '+q(tn),dayList(uniq(Ts.map(z=>z.day))),()=>{api.start&&api.start();Ts.forEach(z=>api.set(z,[]))});
+  act('Dejarlo así','Puedo hacer las dos cosas a la vez',()=>{api.start&&api.start();api.ok(g.key)});
+}
+
+/* ---------- preguntas ---------- */
+const TXT={
+  trabajo:{si:'¿Vas a trabajar esta semana?',sched:'¿Tu horario de trabajo es igual cada día?',days:'¿Qué días trabajas?',time:'¿De qué hora a qué hora trabajas?',split:'¿Vuelves a trabajar después de una pausa?',go:'¿Te desplazas para ir a trabajar?',goNo:'No, trabajo desde casa'},
+  clases:{si:'¿Tienes clases esta semana?',sched:'¿Tus clases son a la misma hora cada día?',days:'¿Qué días tienes clase?',time:'¿De qué hora a qué hora tienes clase?',split:'¿Tienes más clases después de una pausa?',go:'¿Te desplazas para ir a clase?',goNo:'No, son en casa'},
+  estudio:{sched:'¿Estudias a la misma hora cada día?',days:'¿Qué días estudias?',time:'¿De qué hora a qué hora estudias?',split:'¿Estudias otro rato ese mismo día?',go:'¿Dónde estudias?',goNo:'En casa'}};
+const daysOf=a=>a.days;
+const isIrr=a=>a.sched==='irregular'||a.sched==='semanal';
+const twoParts=a=>isIrr(a)?a.days.some(d=>a.irr[d].tramos.length>1):a.split==='si';
+function actSteps(push,sec,k){
+  const a=W.A[k],T=TXT[k],P=(key,t,h,r,x)=>push(Object.assign({sec,grp:k,k:k+'-'+key,t,h,r,skip:()=>{a.yes='no';if(k==='estudio')W.est.mode='luego'}},x));
+  P('sched',T.sched,'',b=>choiceW(b,[['fijo','Sí, igual'],['irregular','No, cambia según el día','Y se repite cada semana'],['semanal','No, cambia cada semana','Solo apunto esta']],a.sched,v=>a.sched=v),{choice:()=>a.sched});
+  if(!a.sched)return;
+  P('days',T.days,'',b=>daysQ(b,'w-'+k+'d',()=>a.days,v=>a.days=v));
+  if(isIrr(a)){
+    a.days.forEach((d,i)=>P('d'+d,DAYS[d]+': ¿de qué hora a qué hora?',i?'Te he puesto lo mismo que el '+low(DAYS[a.days[i-1]])+'. Cámbialo si hace falta.':'',b=>{
+      const x=a.irr[d];if(!x.touched&&i)x.tramos=a.irr[a.days[i-1]].tramos.map(t=>({s:t.s,e:t.e}));
+      tramosW(b,'w-'+k+'i'+d+'_',x.tramos,()=>x.touched=true);
+    }));
+  }else{
+    P('time',T.time,k==='estudio'?'':'La hora real. El trayecto va después.',b=>{const[lo,hi]=waking();spanW(b,'w-'+k+'t',a.tr,lo,hi)});
+    P('split',T.split,k==='estudio'?'':'Por ejemplo, por la tarde.',b=>choiceW(b,YN,a.split,v=>a.split=v),{choice:()=>a.split});
+    if(a.split==='si')P('time2','¿Y esa segunda parte?','',b=>{const[lo,hi]=waking();const m=Math.min(hi-30,parseT(a.tr.e)+15);if(parseT(a.tr2.s)<m){a.tr2.s=fmt(m);a.tr2.e=fmt(Math.min(hi,Math.max(m+60,parseT(a.tr2.e))))}spanW(b,'w-'+k+'u',a.tr2,m,hi)});
+  }
+  P('go',T.go,'',b=>choiceW(b,k==='estudio'?[['no','En casa'],['si','Fuera','Biblioteca, academia…']]:[['si','Sí'],['no',T.goNo]],a.go,v=>a.go=v),{choice:()=>a.go});
+  if(a.go==='si'){
+    P('com','¿Cuánto tardas en llegar?','Solo la ida. Lo añado antes y después.',b=>b.appendChild(sliderW('w-'+k+'c','Trayecto',5,180,5,a.commute,v=>a.commute=v)));
+    if(twoParts(a))P('hb','¿En la pausa vuelves a casa?','',b=>choiceW(b,YN,a.homeBreak,v=>a.homeBreak=v),{choice:()=>a.homeBreak});
+  }
+}
+/* pasos para colocar una cosa: sé cuándo / búscame hueco / luego */
+function itemSteps(push,sec,it,opt){
+  const F=Object.assign({hueco:true,rep:false},FLEX[sec],opt),n=it.title,P=(key,t,h,r,x)=>push(Object.assign({sec,grp:it.id,k:it.id+'-'+key,t,h,r,later:()=>{it.mode='luego'}},x));
+  if(sec!=='viajes')P('mode',n+': ¿sabes cuándo?','',b=>choiceW(b,[['se','Sí, sé el día y la hora'],...(F.hueco?[['hueco','No, búscame un hueco','Miro cuándo te cabe']]:[]),['luego',F.hueco?'Lo dejo para luego':'No, luego lo miro','Queda apuntado para que no se te olvide']],it.mode,v=>it.mode=v),{choice:()=>it.mode,later:null});
+  if(it.mode==='hueco')huecoSteps(P,sec,it);
+  if(it.mode!=='se')return;
+  P('days',n+': ¿qué día?',sec==='viajes'?'Marca todos los días que estés fuera.':'Si son varios, márcalos todos.',b=>daysQ(b,'w-'+it.id+'d',()=>it.days,v=>it.days=v));
+  const rep=b=>{if(F.rep==null)return;const c=el('label','check');const i=el('input');i.type='checkbox';i.id='w-'+it.id+'r';i.checked=it.rep;i.addEventListener('change',()=>it.rep=i.checked);c.append(i,document.createTextNode(' Todas las semanas'));b.appendChild(c)};
+  if(sec==='viajes'){P('time',n+': ¿de qué hora a qué hora?','Las mismas horas cada día. Luego puedes afinar.',b=>spanW(b,'w-'+it.id+'t',it,0,1425));return}
+  if(it.days.length>1)P('same',n+': ¿a la misma hora todos esos días?',dayList(it.days),b=>choiceW(b,YN,it.same,v=>it.same=v),{choice:()=>it.same});
+  if(it.days.length<2||it.same!=='no')P('time',n+': ¿a qué hora?',it.days.length?dayList(it.days):'',b=>{
+    b.append(tSlider('w-'+it.id+'s','Empieza',it.s,0,1410,v=>it.s=v),sliderW('w-'+it.id+'l','Dura',10,240,5,it.dur,v=>it.dur=v));rep(b)});
+  else it.days.forEach((d,i)=>P('t'+d,n+', '+low(DAYS[d])+': ¿a qué hora?','',b=>{
+    const p=it.per[d]||(it.per[d]=i&&it.per[it.days[i-1]]?Object.assign({},it.per[it.days[i-1]]):{s:it.s,dur:it.dur});
+    b.append(tSlider('w-'+it.id+'s'+d,'Empieza',p.s,0,1410,v=>p.s=v),sliderW('w-'+it.id+'l'+d,'Dura',10,240,5,p.dur,v=>p.dur=v));if(i===it.days.length-1)rep(b)}));
+}
+function huecoSteps(P,sec,it){
+  const n=it.title,ex=sec==='ejercicio',reset=()=>it.picks=null;
+  P('n',n+': ¿cuántas veces esta semana?','',b=>choiceW(b,[1,2,3,4,5].map(x=>[x,x===1?'1 vez':x+' veces']),it.times,v=>{it.times=v;reset()},'chips'),{choice:()=>it.times});
+  P('dur',n+': ¿cuánto rato?','Cada vez.',b=>durPick(b,[15,30,45,60,90,120],it.hdur,v=>{it.hdur=v;reset()}),{choice:()=>it.hdur});
+  P('pref',n+': ¿cuándo te viene mejor?','',b=>choiceW(b,[['m','Por la mañana'],['t','Por la tarde o noche'],['x','Me da igual']],it.pref,v=>{it.pref=v;reset()}),{choice:()=>it.pref});
+  if(it.times&&it.hdur&&it.pref)P('picks',n+': te cabe aquí','Si te encaja, pulsa «Siguiente».',b=>{
+    const others=()=>buildEvents(it),pr=it.pref==='x'?null:it.pref;
+    if(it.picks){const o=others();if(it.picks.some(p=>clash1(o,p.d,p.s,p.s+it.hdur)))it.picks=null}
+    if(!it.picks)it.picks=propose(others(),it.times,it.hdur,pr,ex);
+    const box=el('div','extras');b.appendChild(box);
     const draw=()=>{box.innerHTML='';
-      box.appendChild(el('p','hint',SCHED_H[a.sched]));
-      if(a.sched==='fijo'){
-        box.appendChild(el('span','hint','Qué días'));box.appendChild(daysW('w-'+k+'d',a.days,v=>a.days=v));
-        box.appendChild(el('span','hint','Tramos de cada día'));box.appendChild(tramosW('w-'+k+'t',a.tramos));
-      }else{
-        const g=el('div','irr');
-        a.irr.forEach((x,d)=>{const day=el('div','day');const lab=el('label','check');const c=el('input');c.type='checkbox';c.checked=x.on;c.id='w-'+k+'i'+d;lab.append(c,document.createTextNode(DAYS[d]));
-          const tw=tramosW('w-'+k+'i'+d+'_',x.tramos,null,true);tw.hidden=!x.on;c.addEventListener('change',()=>{x.on=c.checked;tw.hidden=!c.checked});
-          day.append(lab,tw);g.appendChild(day)});
-        box.appendChild(g);
-      }};
-    main.append(segW(SCHED,a.sched,v=>{a.sched=v;draw()}),box);b.appendChild(main);draw();
-  }};
-  let com;
-  if(k==='estudio')com={t:'¿Dónde estudias?',h:'En casa no hay trayecto. Fuera, cuenta solo la ida.',r(b){
-    const sub=el('div','wiz-body');
-    const draw=()=>{sub.innerHTML='';if(a.place==='fuera')commuteUI(sub,k,'Sin trayecto')};
-    b.appendChild(segW([['casa','En casa'],['fuera','Fuera (biblioteca…)']],a.place,v=>{a.place=v;draw()}));b.appendChild(sub);draw();
-  }};
-  else com={t:k==='trabajo'?'¿Cuánto tardas en llegar al trabajo?':'¿Cuánto tardas en llegar a clase?',h:'Solo la ida. Lo añado antes y después.',
-    r(b){commuteUI(b,k,k==='trabajo'?'Desde casa':'Sin trayecto')}};
-  return a.off?[hor]:[hor,com];
+      it.picks.forEach((p,k)=>{const r=el('div','extra');r.appendChild(el('b',null,slotTxt(p,it.hdur)));const g=el('div','row');
+        const o=el('button','btn small','Otro hueco');o.type='button';o.addEventListener('click',()=>{const all=allSlots(others(),it.hdur,pr,ex).filter(z=>!it.picks.some((y,m)=>m!==k&&y.d===z.d));if(!all.length)return;let i=all.findIndex(z=>z.d===p.d&&z.s===p.s);it.picks[k]=all[(i+1)%all.length];draw()});
+        const q=el('button','btn ghost small','Quitar');q.type='button';q.addEventListener('click',()=>{it.picks.splice(k,1);it.times=Math.max(1,it.picks.length);draw()});
+        g.append(o,q);r.appendChild(g);box.appendChild(r)});
+      const miss=it.times-it.picks.length;
+      if(!it.picks.length||miss>0){let best=null;const o=others();for(let d=0;d<7;d++)freeGaps(o,d).forEach(([s,e])=>{if(!best||e-s>best.e-best.s)best={d,s,e}});
+        box.appendChild(el('p','hint',(it.picks.length?'No quedan más huecos de '+fmtDur(it.hdur)+(pr?' a esas horas':'')+'. Lo que falta queda apuntado para luego.':'No queda ningún hueco de '+fmtDur(it.hdur)+(pr?' a esas horas':'')+'. Queda apuntado para luego.')+(best&&!it.picks.length?' El hueco más largo que te queda es el '+low(DAYS[best.d])+' de '+fmt(best.s)+' a '+fmtEnd(best.e)+'.':'')))}};
+    draw();
+    const c=el('label','check');const i=el('input');i.type='checkbox';i.id='w-'+it.id+'r';i.checked=it.rep;i.addEventListener('change',()=>it.rep=i.checked);c.append(i,document.createTextNode(' Todas las semanas'));b.appendChild(c);
+  });
+}
+function flexSteps(push,sec,checks){
+  const F=FLEX[sec],G=W.it[sec];
+  push({sec,grp:sec,k:sec+'-si',t:F.q,h:'',choice:()=>G.yes,later:()=>{G.yes=null;G.later=true},r(b){tagsW(b,F.ex.slice(0,6).map(x=>low(x)));choiceW(b,YN,G.yes,v=>{G.yes=v;G.later=false})}});
+  if(G.yes!=='si')return;
+  push({sec,grp:sec,k:sec+'-ex',t:'Marca lo que tengas',h:'Si falta algo, escríbelo.',later:()=>{G.yes=null;G.later=true},r(b){
+    const ch=el('div','chips');const draw=()=>{ch.innerHTML='';uniq([...F.ex,...G.list.map(x=>x.title)]).forEach(t=>{const it=G.list.find(x=>x.title===t);const c=el('button','chip big',t);c.type='button';c.setAttribute('aria-pressed',!!it);c.addEventListener('click',()=>{if(it)G.list=G.list.filter(x=>x!==it);else G.list.push(mkItem(sec,t));msg.textContent='';draw()});ch.appendChild(c)})};
+    const msg=el('p','hint');const ti=el('input','txt');ti.id='w-'+sec+'t';ti.placeholder='Otra cosa';ti.maxLength=60;ti.setAttribute('aria-label','Otra cosa');
+    const put=()=>{const t=ti.value.trim();if(!t)return;if(!G.list.some(x=>x.title===t))G.list.push(mkItem(sec,t));ti.value='';msg.textContent='';draw()};
+    ti.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();put()}});
+    const ad=el('button','btn','Añadir');ad.type='button';ad.addEventListener('click',put);
+    const r=el('div','row');r.style.flexWrap='nowrap';r.append(ti,ad);draw();b.append(ch,r,msg);
+    flush=strict=>{put();if(strict&&!G.list.length){msg.textContent='Marca algo, o pulsa «Lo dejo para luego».';return false}return true};
+  }});
+  G.list.forEach((it,n)=>{itemSteps(push,sec,it);checks(sec,n)});
+  if(sec==='viajes'&&G.list.length&&(W.A.trabajo.yes==='si'||W.A.clases.yes==='si'||W.A.estudio.yes==='si'))push({sec,grp:sec,k:'viajes-work',t:'¿Esos días trabajas o estudias igual?',h:'',choice:()=>W.tripWork,r(b){choiceW(b,YN,W.tripWork,v=>W.tripWork=v)}});
 }
 function getSteps(){
-  const s=[
-   {t:'Vamos a ordenar tu semana',h:'Una pregunta cada vez. Salta las que no sepas.',
-    r(b){const row=el('div','flow');['Sueño','Trabajo o estudios','Comidas','Ejercicio','Citas','Viajes'].forEach((t,i)=>{if(i)row.appendChild(el('span','arr','→'));row.appendChild(el('span','tag',t))});
-      b.appendChild(row);const p=el('p',null,'Luego lo ajustas a mano.');p.style.cssText='margin:0;font-size:13px;color:var(--muted)';b.appendChild(p)}},
-   {t:'Tu sueño',h:'Pon la hora a la que te duermes de verdad. El rato para desconectar va justo antes. Las demás barras se ajustan a esto.',
-    r(b){
-      const sum=el('div','sleep-sum');const mod=x=>((x%1440)+1440)%1440;
-      const upd=()=>{sum.innerHTML='';const bd=parseT(W.bed),wk=parseT(W.wake);if(bd==null||wk==null)return;
-        if(W.wind){const r1=el('div');r1.append(el('span',null,'Desconectar'),el('b',null,fmt(mod(bd-W.wind))+' – '+fmt(bd)));sum.appendChild(r1)}
-        const r2=el('div');r2.append(el('span',null,'Dormir'),el('b',null,fmt(bd)+' – '+fmt(wk)));sum.appendChild(r2)};
-      b.appendChild(pair(tSlider('w-bed','Me duermo a las',W.bed,1080,1800,v=>{W.bed=v;upd()}),tSlider('w-wake','Me levanto a las',W.wake,180,840,v=>{W.wake=v;upd()})));
-      b.appendChild(sliderW('w-wind','Desconectar antes de dormir',0,120,5,W.wind,v=>{W.wind=v;upd()},'Nada'));
-      b.appendChild(sum);upd();
-      const c=el('label','check');const i=el('input');i.type='checkbox';i.id='w-wkd';i.checked=W.weekendDiff;c.append(i,document.createTextNode(' El fin de semana es distinto'));b.appendChild(c);
-      const wk=pair(tSlider('w-wkbed','Viernes y sábado me duermo a las',W.wkBed,1080,1800,v=>W.wkBed=v),tSlider('w-wkwake','Sábado y domingo me levanto a las',W.wkWake,240,900,v=>W.wkWake=v));
-      wk.hidden=!W.weekendDiff;b.appendChild(wk);i.addEventListener('change',()=>{W.weekendDiff=i.checked;wk.hidden=!i.checked});
-    }},
-   {t:'¿Qué ocupa tu semana?',h:'Marca lo que aplique. Puedes marcar trabajo y estudios.',
-    r(b){
-      const ch=el('div','chips');
-      const has=k=>k==='estudios'?(W.acts.includes('clases')||W.acts.includes('estudio')):W.acts.includes(k);
-      [['trabajo','Trabajo'],['estudios','Estudios'],['nada','Ahora no trabajo ni estudio']].forEach(([k,t])=>{const c=el('button','chip big',t);c.type='button';c.setAttribute('aria-pressed',k==='nada'?W.none:has(k));
-        c.addEventListener('click',()=>{
-          if(k==='nada'){W.none=!W.none;if(W.none)W.acts=[]}
-          else{W.none=false;const on=!has(k);const ks=k==='estudios'?['clases','estudio']:['trabajo'];W.acts=ORDER.filter(x=>on?(ks.includes(x)||W.acts.includes(x)):(W.acts.includes(x)&&!ks.includes(x)))}
-          drawStep(true)});ch.appendChild(c)});
-      b.appendChild(ch);
-      const nm=[has('trabajo')?'trabajo':null,has('estudios')?'estudios':null].filter(Boolean);
-      b.appendChild(el('p','hint',W.none?'Sin problema. Seguimos con comidas, ejercicio y lo que quieras que tenga sitio.':W.acts.length?'Siguiente: '+nm.join(' y ')+'.'+(has('estudios')?' Estudios incluye clases y estudio por tu cuenta.':''):'Si prefieres no contestar, pulsa «Siguiente».'));
-    }}
-  ];
-  W.acts.forEach(k=>s.push(...actSteps(k)));
-  s.push(
-   {t:'¿A qué hora comes?',h:'Quita la que no quieras y ajusta cuánto dura.',
-    r(b){[['breakfast','Desayuno',5,60],['lunch','Comida',15,120],['dinner','Cena',15,90]].forEach(([k,t,mn,mx])=>{const m=W.meals[k];const box=el('div','wiz-body');box.style.gap='6px';
-      const c=el('label','check');const i=el('input');i.type='checkbox';i.id='w-m'+k;i.checked=m.on;c.append(i,document.createTextNode(' '+t));
-      const MR={breakfast:wRange(300,720),lunch:wRange(660,1080),dinner:wRange(1080,1410)};
-      const inner=pair(tSlider('w-mt'+k,'A las',m.t,MR[k][0],MR[k][1],v=>m.t=v),sliderW('w-ml'+k,'Dura',mn,mx,5,m.len,v=>m.len=v));inner.style.alignItems='flex-end';inner.hidden=!m.on;
-      i.addEventListener('change',()=>{m.on=i.checked;inner.hidden=!i.checked});box.append(c,inner);b.appendChild(box)})}},
-   {t:'¿Quieres moverte o hacer ejercicio esta semana?',h:'Si no siempre es a la misma hora, elige «Cada día a su hora».',
-    r(b){
-      const box=el('div','wiz-body');
-      const draw=()=>{box.innerHTML='';
-        if(W.exSched==='fijo'){
-          box.appendChild(el('span','hint','Qué días. Con uno ya cuenta.'));box.appendChild(daysW('w-ex',W.exDays,v=>W.exDays=v));
-          const r=pair(tSlider('w-ext','A las',W.exTime,waking()[0],waking()[1],v=>W.exTime=v),sliderW('w-exd','Dura',10,180,5,W.exDur,v=>W.exDur=v));r.style.alignItems='flex-end';box.appendChild(r);
-        }else{
-          box.appendChild(el('span','hint','Marca los días y mueve las barras. Un día puede tener más de un rato.'));
-          const g=el('div','irr');
-          W.exIrr.forEach((x,d)=>{const day=el('div','day');const lab=el('label','check');const c=el('input');c.type='checkbox';c.checked=x.on;c.id='w-exi'+d;lab.append(c,document.createTextNode(DAYS[d]));
-            const tw=tramosW('w-exi'+d+'_',x.tramos,null,true);tw.hidden=!x.on;c.addEventListener('change',()=>{x.on=c.checked;tw.hidden=!c.checked});
-            day.append(lab,tw);g.appendChild(day)});
-          box.appendChild(g);
-        }};
-      b.appendChild(segW([['fijo','Siempre a la misma hora'],['irregular','Cada día a su hora']],W.exSched,v=>{W.exSched=v;draw()}));b.appendChild(box);draw();
-    }},
-   itemsStep({t:'¿Hay algo fijo cada semana que quieras que tenga sitio?',h:'Ver a alguien, una actividad, un rato para ti.',
-     list:()=>W.extras,id:'x',ph:'p. ej. Cena con amigos',s:'18:00',e:'19:00',area:4,single:false}),
-   itemsStep({t:'¿Tienes alguna cita o algo puntual esta semana?',h:'El médico, una gestión, un cumpleaños. Solo esta semana.',
-     list:()=>W.citas,id:'c',ph:'p. ej. Médico',s:'10:00',e:'11:00',area:5,single:true}),
-   (()=>{const vs=itemsStep({t:'¿Tienes algún viaje o día fuera esta semana?',h:'Un viaje, una escapada, un día fuera. Esos días no se ponen trabajo ni estudio, salvo que digas lo contrario.',
-     list:()=>W.viajes,id:'v',ph:'p. ej. Viaje a Madrid',s:'09:00',e:'19:00',area:4,single:false});
-     const r0=vs.r;vs.r=b=>{r0(b);if(W.acts.length){const c=el('label','check');const i=el('input');i.type='checkbox';i.id='w-tripwork';i.checked=W.tripWork;i.addEventListener('change',()=>W.tripWork=i.checked);c.append(i,document.createTextNode(' Esos días sigo con mi trabajo o estudios'));b.appendChild(c)}};return vs})(),
-   {t:'Tu semana, lista para crear',h:'Revisa el resumen. Luego mueve o borra lo que quieras.',last:true,
-    r(b){
-      const ev=buildEvents();const count={};ev.forEach(e=>{count[e.title]=(count[e.title]||0)+1});
-      const ul=el('ul','summary');Object.entries(count).forEach(([k,v])=>{const li=el('li');li.append(el('span',null,k),el('b',null,v+(v===1?' bloque':' bloques')));ul.appendChild(li)});
-      if(!ev.length)ul.appendChild(el('li',null,'No hay nada que crear todavía: vuelve atrás y contesta alguna pregunta.'));
-      b.appendChild(ul);
-      if(W.acts.some(k=>W.A[k].sched==='semanal'&&!(k==='clases'&&W.A[k].off)))b.appendChild(el('p','hint','El horario que cambia cada semana queda solo en esta semana.'));
-      if(S.events.length)b.appendChild(segW([['replace','Reemplazar la semana'],['add','Añadir a lo que hay']],W.mode,v=>W.mode=v));
-    }});
+  if(resume)return[{sec:null,k:'resume',t:'Tenías la guía a medias',h:'',choice:()=>null,r(b){choiceW(b,[['s','Seguir donde lo dejé'],['n','Empezar de nuevo']],null,v=>{resume=false;skipAdv=true;if(v==='n'){W=W0();wKey='intro';wIdx=0}else wKey=lastKey})}}];
+  const s=[],push=x=>s.push(x);let all=null;
+  /* al acabar cada parte, los choques que acaban de aparecer */
+  const secOf=e=>FLEX[e.src]?e.src:e.src==='estudio'?(W.est.mode==='hueco'?'estudios2':'estudios'):SRCSEC[e.src]||'fin';
+  const pos=e=>{const c=secOf(e),L=W.it[c];return SECS.indexOf(c)*100+(L&&e.it?L.list.findIndex(x=>x.id===e.it)+1:99)};
+  const checks=(sec,n)=>{all=all||clashes(buildEvents(),W.okc);const me=SECS.indexOf(sec)*100+(n==null?99:n+1);all.filter(g=>Math.max(...g.pairs.flatMap(p=>[p.A,p.B]).map(pos))===me).forEach(g=>push({sec,grp:'cl',k:'cl-'+g.key,clash:true,
+    t:'Tienes dos cosas a la vez',h:'«'+g.a+'» y «'+g.b+'» no caben en el mismo rato. ¿Qué cambiamos?',choice:()=>null,later:()=>{},r(b){clashUI(b,g,{evs:()=>buildEvents(),set:(e,l)=>{W.moves[e.key]=l},pend:e=>W.pend.push({t:evName(e),a:e.area}),ok:k=>W.okc.push(k),then:drawStep})}}))};
+  push({sec:null,k:'intro',t:'Vamos a ordenar tu semana',h:'Una pregunta por pantalla. Si no sabes algo, lo dejas para luego.',r(b){
+    const row=el('div','flow');[['Sueño',2],['Trabajo o estudios',0],['Comidas',6],['Citas',1],['Gente',3],['Casa',5],['Ocio',4]].forEach(([t,i])=>{const x=el('span','tag');const c=area(areaByIndex(i)).color;x.style.background=c;x.style.color=textOn(c);x.style.borderColor=edge(c);x.textContent=t;row.appendChild(x)});
+    b.appendChild(row);b.appendChild(el('p','note','Cada color es una parte de tu semana.'))}});
+  if(S.events.length)push({sec:null,k:'modo',t:'Ya tienes una semana hecha',h:'',choice:()=>W.mode,r(b){choiceW(b,[['replace','Empezar de cero','Se puede deshacer'],['add','Añadir a lo que hay']],W.mode,v=>W.mode=v)}});
+  const gate=(sec,k,t,h,get,set)=>push({sec,grp:k,k:k+'-si',t,h,choice:get,r(b){choiceW(b,YN,get(),set)},skip:()=>set('no')});
+  /* sueño */
+  gate('sueno','sueno','¿Ponemos tus horas de sueño?','Así sé qué ratos tienes de verdad.',()=>W.sleepYes,v=>W.sleepYes=v);
+  if(sleepOn()){
+    const P=(k,t,h,r,x)=>push(Object.assign({sec:'sueno',grp:'sueno',k:'sueno-'+k,t,h,r,skip:()=>W.sleepYes='no'},x));
+    P('bed','¿A qué hora te duermes?','La hora real, no la ideal.',b=>b.appendChild(tSlider('w-bed','Me duermo a las',W.bed,1080,1800,v=>W.bed=v)));
+    P('wake','¿A qué hora te levantas?','',b=>b.appendChild(tSlider('w-wake','Me levanto a las',W.wake,180,840,v=>W.wake=v)));
+    P('wkd','¿El fin de semana cambia?','',b=>choiceW(b,YN,W.wkd,v=>W.wkd=v),{choice:()=>W.wkd});
+    if(wkdOn()){P('wkbed','Viernes y sábado, ¿a qué hora te duermes?','',b=>b.appendChild(tSlider('w-wkbed','Me duermo a las',W.wkBed,1080,1800,v=>W.wkBed=v)));
+      P('wkwake','Sábado y domingo, ¿a qué hora te levantas?','',b=>b.appendChild(tSlider('w-wkwake','Me levanto a las',W.wkWake,240,900,v=>W.wkWake=v)))}
+    P('wind','¿Quieres un rato para desconectar antes de dormir?','Sin pantallas ni tareas.',b=>choiceW(b,YN,W.windYes,v=>W.windYes=v),{choice:()=>W.windYes});
+    if(W.windYes==='si')P('windt','¿Cuánto rato?','',b=>durPick(b,[15,30,45,60,90],W.windSet?W.wind:null,v=>{W.wind=v;W.windSet=true}),{choice:()=>W.windSet});
+  }
+  /* trabajo y estudios */
+  gate('trabajo','trabajo',TXT.trabajo.si,'Por ejemplo: en una empresa, por tu cuenta, una guardia.',()=>W.A.trabajo.yes,v=>W.A.trabajo.yes=v);
+  if(W.A.trabajo.yes==='si')actSteps(push,'trabajo','trabajo');
+  checks('trabajo');
+  gate('estudios','clases',TXT.clases.si,'Por ejemplo: universidad, academia, idiomas, autoescuela.',()=>W.A.clases.yes,v=>W.A.clases.yes=v);
+  if(W.A.clases.yes==='si')actSteps(push,'estudios','clases');
+  gate('estudios','estudio','¿Vas a estudiar por tu cuenta?','Por ejemplo: un examen, una oposición, un curso.',()=>W.A.estudio.yes,v=>{W.A.estudio.yes=v;if(v==='no')W.est.mode=null});
+  if(W.A.estudio.yes==='si'){
+    const it=W.est,P=(key,t,h,r,x)=>push(Object.assign({sec:'estudios',grp:it.id,k:it.id+'-'+key,t,h,r,later:()=>{it.mode='luego'}},x));
+    P('mode','Estudio: ¿sabes cuándo?','',b=>choiceW(b,[['se','Sí, sé los días y las horas'],['hueco','No, búscame huecos','Al final miro cuándo te cabe'],['luego','Lo dejo para luego','Queda apuntado para que no se te olvide']],it.mode,v=>it.mode=v),{choice:()=>it.mode,later:null});
+    if(it.mode==='se')actSteps(push,'estudios','estudio');
+  }
+  checks('estudios');
+  /* comidas */
+  gate('comidas','comidas','¿Quieres que las comidas tengan su rato?','Desayuno, comida y cena.',()=>W.mealsYes,v=>W.mealsYes=v);
+  if(W.mealsYes==='si'){
+    push({sec:'comidas',grp:'comidas',k:'comidas-q',t:'¿Cuáles pongo?',h:'Quita la que no quieras.',skip:()=>W.mealsYes='no',r(b){const ch=el('div','chips');MEALS.forEach(([k,t])=>{const m=W.meals[k];const c=el('button','chip big',t);c.type='button';c.setAttribute('aria-pressed',m.on);c.addEventListener('click',()=>{m.on=!m.on;c.setAttribute('aria-pressed',m.on)});ch.appendChild(c)});b.appendChild(ch)}});
+    const MX={breakfast:[300,720,5,60],lunch:[660,1080,15,120],dinner:[1080,1410,15,90]};
+    MEALS.forEach(([k,t,art])=>{const m=W.meals[k];if(!m.on)return;push({sec:'comidas',grp:'m-'+k,k:'comidas-'+k,t:'¿A qué hora es '+art+'?',h:'',skip:()=>m.on=false,r(b){const R=wRange(MX[k][0],MX[k][1]);b.append(tSlider('w-mt'+k,'Empieza',m.t,R[0],R[1],v=>m.t=v),sliderW('w-ml'+k,'Dura',MX[k][2],MX[k][3],5,m.len,v=>m.len=v))}})});
+  }
+  checks('comidas');
+  gate('cocinar','cocinar','¿Cocinas?','Cocinar también ocupa tiempo.',()=>W.cookYes,v=>W.cookYes=v);
+  if(W.cookYes==='si'){
+    push({sec:'cocinar',grp:'cocinar',k:'cocinar-q',t:'¿Qué cocinas?',h:'',choice:()=>W.cookWhat,skip:()=>W.cookYes='no',r(b){choiceW(b,[['lunch','La comida'],['dinner','La cena'],['both','Las dos']],W.cookWhat,v=>W.cookWhat=v)}});
+    MEALS.slice(1).forEach(([k,t,art])=>{if(W.cookWhat!==k&&W.cookWhat!=='both')return;const c=W.cook[k],P=(key,q,h,r,x)=>push(Object.assign({sec:'cocinar',grp:'ck-'+k,k:'cocinar-'+k+key,t:q,h,r,skip:()=>c.len=null},x));
+      if(W.mealsYes!=='si'||!W.meals[k].on)P('t','¿A qué hora tienes lista '+art+'?','',b=>{const R=k==='lunch'?wRange(660,1080):wRange(1080,1410);b.appendChild(tSlider('w-ck'+k,'Lista a las',W.meals[k].t,R[0],R[1],v=>W.meals[k].t=v))});
+      P('l','¿Cuánto tardas en hacer '+art+'?','Lo pongo justo antes.',b=>durPick(b,[15,30,45,60,90],c.len,v=>c.len=v),{choice:()=>c.len});
+      P('d','¿Qué días cocinas '+art+'?','',b=>daysQ(b,'w-cd'+k,()=>c.days,v=>c.days=v));
+    });
+  }
+  checks('cocinar');
+  ['salud','viajes','gente','casa'].forEach(sec=>{flexSteps(push,sec,checks);checks(sec)});
+  /* huecos */
+  push({sec:'huecos',grp:'huecos',k:'huecos',t:'Estos son tus ratos libres',h:'Con lo que has puesto hasta ahora. Lo siguiente va aquí.',r(b){
+    const evs=buildEvents(),ul=el('ul','gaps');
+    for(let d=0;d<7;d++){const g=freeGaps(evs,d).filter(([s,e])=>e-s>=45);const li=el('li');li.append(el('b',null,DAYS[d]),el('span',null,g.length?g.map(([s,e])=>fmt(s)+'–'+fmtEnd(e)).join(' · '):'Ninguno'));ul.appendChild(li)}
+    b.appendChild(ul)}});
+  if(W.A.estudio.yes==='si'&&W.est.mode==='hueco'){const it=W.est;huecoSteps((key,t,h,r,x)=>push(Object.assign({sec:'estudios2',grp:'est2',k:it.id+'-'+key,t,h,r,later:()=>{it.mode='luego'}},x)),'estudios2',it)}
+  checks('estudios2');
+  ['ejercicio','ocio','mio'].forEach(sec=>{flexSteps(push,sec,checks);checks(sec)});
+  checks('fin');
+  push({sec:'fin',k:'fin',t:'Tu semana, lista para crear',h:'Luego mueve o borra lo que quieras.',last:true,r(b){
+    const ev=buildEvents(),ul=el('ul','summary');
+    S.areas.forEach(a=>{const L=ev.filter(e=>e.area===a.id);if(!L.length)return;const c={};L.forEach(e=>{if(e.title==='Dormir'&&e.start===0)return;(c[e.title]=c[e.title]||new Set()).add(e.day)});Object.entries(c).forEach(([k,v])=>{const li=el('li');const s=el('span');const i=el('i');i.style.background=a.color;s.append(i,document.createTextNode(k));li.append(s,el('b',null,v.size===7?'Todos los días':v.size===1?DAYS[[...v][0]]:[...v].sort((x,y)=>x-y).map(d=>SHORT[d]).join(' ')));ul.appendChild(li)})});
+    if(!ev.length)ul.appendChild(el('li',null,'No hay nada que crear todavía: vuelve atrás y contesta alguna pregunta.'));
+    b.appendChild(ul);
+    const p=pendList();if(p.length)b.appendChild(el('p','note','Para luego: '+p.map(x=>x.t).join(', ')+'. Lo verás encima del calendario.'));
+    const cl=clashes(ev,W.okc);if(cl.length)b.appendChild(el('p','note warn',(cl.length===1?'Queda 1 choque de horario: ':'Quedan '+cl.length+' choques de horario: ')+cl.map(g=>'«'+g.a+'» y «'+g.b+'»').join('; ')+'.'));
+    if(['trabajo','clases','estudio'].some(k=>W.A[k].yes==='si'&&W.A[k].sched==='semanal'))b.appendChild(el('p','hint','El horario que cambia cada semana queda solo en esta semana.'));
+  }});
   return s;
 }
-
-function dayPick(prefix,on){const box=el('div','days7');box.setAttribute('role','radiogroup');for(let d=0;d<7;d++){const l=el('label');const i=el('input');i.type='radio';i.name=prefix;i.id=prefix+d;i.addEventListener('change',()=>{if(i.checked)on(d)});const sp=el('span',null,SHORT[d]);sp.title=DAYS[d];l.append(i,sp);box.appendChild(l)}return box}
-function itemsStep(o){
-  return{t:o.t,h:o.h,r(b){
-    const L=o.list();const list=el('div','extras');
-    const drawList=()=>{list.innerHTML='';L.forEach((x,k)=>{const r=el('div','extra');r.append(el('span',null,`${x.title} · ${x.days.map(d=>o.single?DAYS[d]:SHORT[d]).join(' ')} · ${x.s}–${x.e}`));const del=el('button','btn ghost small','Quitar');del.type='button';del.addEventListener('click',()=>{L.splice(k,1);drawList()});r.appendChild(del);list.appendChild(r)})};
-    const nx={days:[],s:o.s,e:o.e,area:areaByIndex(o.area)};
-    const ti=el('input','txt');ti.id='w-'+o.id+'t';ti.placeholder=o.ph;
-    b.appendChild(fieldW('Qué',ti));
-    b.appendChild(el('span','hint',o.single?'Qué día':'Qué días'));
-    const dw=o.single?dayPick('w-'+o.id+'d',v=>nx.days=[v]):daysW('w-'+o.id+'d',nx.days,v=>nx.days=v);b.appendChild(dw);
-    let sS,eS;
-    eS=tSlider('w-'+o.id+'e','Acaba',nx.e,15,1425,v=>{nx.e=v;const s0=parseT(nx.s),e0=parseT(v);if(s0>=e0){const ns=e0-15;nx.s=fmt(ns);sS.set(ns)}});
-    sS=tSlider('w-'+o.id+'s','Empieza',nx.s,0,1410,v=>{nx.s=v;const s0=parseT(v),e0=parseT(nx.e);if(e0==null||e0<=s0){const ne=Math.min(1425,s0+60);nx.e=fmt(ne);eS.set(ne)}});
-    b.appendChild(pair(sS,eS));
-    const ch=el('div','chips');S.areas.forEach(a=>{const c=el('button','chip');c.type='button';c.setAttribute('aria-pressed',a.id===nx.area);const i=el('i');i.style.background=a.color;c.append(i,document.createTextNode(a.name));c.addEventListener('click',()=>{nx.area=a.id;ch.querySelectorAll('.chip').forEach(z=>z.setAttribute('aria-pressed','false'));c.setAttribute('aria-pressed','true')});ch.appendChild(c)});
-    b.appendChild(ch);
-    const add=el('button','btn','Añadir');add.type='button';const msg=el('span','hint');
-    /* añade lo escrito. strict=true: avisa si falta algo. Se llama también al pulsar «Siguiente», para no perder lo que no se ha añadido */
-    const tryAdd=strict=>{
-      const title=ti.value.trim();
-      if(!title)return true;
-      if(!nx.days.length){if(strict)msg.textContent=o.single?'Elige el día de «'+title+'» o borra el texto.':'Marca al menos un día para «'+title+'» o borra el texto.';return !strict}
-      const s0=parseT(nx.s),e0=parseT(nx.e);
-      if(s0==null||e0==null||e0<=s0){if(strict)msg.textContent='La hora de fin tiene que ser después de la de inicio.';return !strict}
-      msg.textContent='';L.push({title,days:nx.days.slice(),s:nx.s,e:nx.e,area:nx.area});ti.value='';drawList();return true;
-    };
-    add.addEventListener('click',()=>{if(!ti.value.trim()){msg.textContent='Pon qué es.';return}if(tryAdd(true))ti.focus()});
-    flush=tryAdd;
-    const r=el('div','row');r.append(add,msg);b.appendChild(r);b.appendChild(list);drawList();
-  }};
+/* lo que se ha dejado para luego */
+function pendList(){
+  const out=[];
+  FKEYS.forEach(k=>{const G=W.it[k],a=areaByIndex(SEC[k][1]);if(G.later)out.push({t:FLEX[k].later,a});if(G.yes==='si')G.list.forEach(it=>{if(it.mode==='luego')out.push({t:it.title,a});else if(it.mode==='hueco'&&it.picks&&it.picks.length<(it.times||0))out.push({t:it.title,a})})});
+  const e=W.est;if(W.A.estudio.yes==='si'&&(e.mode==='luego'||(e.mode==='hueco'&&e.picks&&e.picks.length<(e.times||0))))out.push({t:'Estudio',a:areaByIndex(0)});
+  return out.concat(W.pend);
 }
+
 function placeAbs(out,d,s,e,o){
   if(e<=s)return;
   if(s<1440)out.push(Object.assign({day:d%7,start:Math.max(0,s),end:Math.min(e,1440)},o));
   if(e>1440)out.push(Object.assign({day:(d+1)%7,start:Math.max(0,s-1440),end:e-1440},o));
 }
-function buildEvents(){
-  const out=[];const P=parseT;
-  const sleepA=areaByIndex(2),workA=areaByIndex(0),exA=areaByIndex(1),selfA=areaByIndex(6);
-  const bedOf=d=>{const t=P(W.weekendDiff&&(d===4||d===5)?W.wkBed:W.bed);return t==null?null:(t<12*60?t+1440:t)};
-  const wakeOf=d=>P(W.weekendDiff&&(d===5||d===6)?W.wkWake:W.wake);
-  for(let d=0;d<7;d++){
-    const b=bedOf(d),w=wakeOf((d+1)%7);
-    if(b!=null&&w!=null)placeAbs(out,d,b,1440+w,{title:'Dormir',area:sleepA});
-    if(b!=null&&W.wind)placeAbs(out,d,b-W.wind,b,{title:'Desconectar',area:sleepA});
+/* bloques a partir de las respuestas. «skip»: cosa que no se cuenta (para buscarle hueco) */
+function buildEvents(skip){
+  const out=[],P=parseT,sleepA=areaByIndex(2),workA=areaByIndex(0),selfA=areaByIndex(6);
+  if(sleepOn()){
+    const bedOf=d=>{const t=P(wkdOn()&&(d===4||d===5)?W.wkBed:W.bed);return t==null?null:(t<12*60?t+1440:t)};
+    const wakeOf=d=>P(wkdOn()&&(d===5||d===6)?W.wkWake:W.wake);
+    for(let d=0;d<7;d++){const b=bedOf(d),w=wakeOf((d+1)%7);
+      if(b!=null&&w!=null)placeAbs(out,d,b,1440+w,{title:'Dormir',area:sleepA,src:'dormir'});
+      if(b!=null&&windOf())placeAbs(out,d,b-windOf(),b,{title:'Desconectar',area:sleepA,src:'dormir'})}
   }
-  const off=W.tripWork?new Set():new Set(W.viajes.flatMap(v=>v.days));
-  W.acts.forEach(k=>{
-    const a=W.A[k],name=ACTS[k].name,c=(k==='estudio'&&a.place!=='fuera')?0:a.commute,once=a.sched==='semanal',ox=o=>once?Object.assign(o,{once:true}):o;
-    if(k==='clases'&&a.off)return;
-    const dayBlocks=(d,tramos)=>{
+  const trips=W.it.viajes.yes==='si'?W.it.viajes.list.filter(v=>v.mode==='se'):[];
+  const off=W.tripWork==='si'?new Set():new Set(trips.flatMap(v=>v.days));
+  const inTrip=(d,s,e)=>trips.some(v=>v.days.includes(d)&&P(v.s)<e&&P(v.e)>s);
+  ['trabajo','clases','estudio'].forEach(k=>{
+    const a=W.A[k];if(a.yes!=='si'||!a.sched||(k==='estudio'&&W.est.mode!=='se'))return;
+    const name=ACTS[k].name,c=a.go==='si'?a.commute:0,ox=o=>a.sched==='semanal'?Object.assign(o,{once:true}):o;
+    a.days.forEach(d=>{
       if(off.has(d))return;
-      const ts=tramos.map(t=>({s:P(t.s),e:P(t.e)})).filter(t=>t.s!=null&&t.e!=null&&t.e>t.s).sort((x,y)=>x.s-y.s);
-      if(!ts.length)return;
-      ts.forEach(t=>out.push(ox({day:d,start:t.s,end:t.e,title:name,area:workA})));
-      if(c){
-        const trip=(s,e)=>{if(e>s)out.push(ox({day:d,start:Math.max(0,s),end:Math.min(1440,e),title:'Trayecto',area:workA}))};
+      const tr=isIrr(a)?a.irr[d].tramos:(a.split==='si'?[a.tr,a.tr2]:[a.tr]);
+      const ts=tr.map(t=>({s:P(t.s),e:P(t.e)})).filter(t=>t.s!=null&&t.e!=null&&t.e>t.s).sort((x,y)=>x.s-y.s);if(!ts.length)return;
+      ts.forEach(t=>out.push(ox({day:d,start:t.s,end:t.e,title:name,area:workA,src:k})));
+      if(c){const trip=(s,e)=>{if(e>s)out.push(ox({day:d,start:Math.max(0,s),end:Math.min(1440,e),title:'Trayecto',area:workA,src:k==='trabajo'?'trabajo':'trayecto'}))};
         trip(ts[0].s-c,ts[0].s);trip(ts[ts.length-1].e,ts[ts.length-1].e+c);
-        if(a.homeBreak)for(let i=0;i<ts.length-1;i++){if(ts[i+1].s-ts[i].e>=2*c){trip(ts[i].e,ts[i].e+c);trip(ts[i+1].s-c,ts[i+1].s)}}
-      }};
-    if(a.sched==='fijo')a.days.forEach(d=>dayBlocks(d,a.tramos));
-    else a.irr.forEach((x,d)=>{if(x.on)dayBlocks(d,x.tramos)});
+        if(a.homeBreak==='si')for(let i=0;i<ts.length-1;i++)if(ts[i+1].s-ts[i].e>=2*c){trip(ts[i].e,ts[i].e+c);trip(ts[i+1].s-c,ts[i+1].s)}}
+    });
   });
-  [['breakfast','Desayuno'],['lunch','Comida'],['dinner','Cena']].forEach(([k,t])=>{const m=W.meals[k];if(!m.on)return;const s=P(m.t);if(s==null)return;for(let d=0;d<7;d++)out.push({day:d,start:s,end:Math.min(1440,s+m.len),title:t,area:selfA})});
-  if(W.exSched==='fijo'){const ex=P(W.exTime);if(ex!=null)W.exDays.filter(d=>!off.has(d)).forEach(d=>out.push({day:d,start:ex,end:Math.min(1440,ex+W.exDur),title:'Ejercicio',area:exA}))}
-  else W.exIrr.forEach((x,d)=>{if(x.on&&!off.has(d))x.tramos.forEach(t=>{const s=P(t.s),e=P(t.e);if(s!=null&&e!=null&&e>s)out.push({day:d,start:s,end:e,title:'Ejercicio',area:exA})})});
-  W.extras.concat(W.citas,W.viajes).forEach(x=>{const s=P(x.s),e=P(x.e);if(s==null||e==null||e<=s)return;const fijo=W.extras.includes(x);x.days.forEach(d=>{if(fijo&&off.has(d))return;out.push({day:d,start:s,end:e,title:x.title,area:x.area,once:!fijo})})});
-  return out;
+  for(let d=0;d<7;d++)MEALS.forEach(([k,t])=>{const m=W.meals[k];let s=P(m.t);if(s==null)return;
+    if(k==='breakfast'&&sleepOn()&&wkdOn()&&d>4)s=Math.max(0,s+P(W.wkWake)-P(W.wake));
+    if(W.mealsYes==='si'&&m.on&&!inTrip(d,s,s+m.len))out.push({day:d,start:s,end:Math.min(1440,s+m.len),title:t,area:selfA,src:'comida'});
+    const c=W.cook[k];if(c&&W.cookYes==='si'&&c.len&&(W.cookWhat===k||W.cookWhat==='both')&&c.days.includes(d)&&!inTrip(d,s-c.len,s))out.push({day:d,start:Math.max(0,s-c.len),end:s,title:k==='lunch'?'Cocinar la comida':'Cocinar la cena',area:selfA,src:'cocinar'})});
+  const put=(it,d,s,dur,ar,once,src)=>{if(s==null||dur<=0)return;out.push({day:d,start:s,end:Math.min(1440,s+dur),title:it.title,area:ar,src,once,it:it.id})};
+  FKEYS.forEach(k=>{const G=W.it[k];if(G.yes!=='si')return;const ar=areaByIndex(SEC[k][1]);G.list.forEach(it=>{if(it===skip)return;
+    if(it.mode==='se')it.days.forEach(d=>{
+      if(k==='viajes'){put(it,d,P(it.s),P(it.e)-P(it.s),ar,true,k);return}
+      if(off.has(d)&&it.rep)return;const p=it.days.length>1&&it.same==='no'?it.per[d]:null;put(it,d,P(p?p.s:it.s),p?p.dur:it.dur,ar,!it.rep,k)});
+    if(it.mode==='hueco'&&it.picks)it.picks.forEach(p=>put(it,p.d,p.s,it.hdur,ar,!it.rep,k))})});
+  if(W.A.estudio.yes==='si'&&W.est.mode==='hueco'&&W.est.picks&&W.est!==skip)W.est.picks.forEach(p=>put(W.est,p.d,p.s,W.est.hdur,workA,!W.est.rep,'estudio'));
+  /* cambios hechos al resolver choques */
+  const res=[],go=e=>{const m=W.moves[e.key];if(!m){res.push(e);return}m.forEach((x,i)=>go(Object.assign({},e,{day:x.d,start:x.s,end:x.e,key:e.key+'#'+i})))};
+  out.forEach(e=>{e.key=[e.src,e.title,e.day,e.start,e.end].join('|');go(e)});
+  return res;
 }
-function drawStep(keepFocus){
-  const steps=getSteps();if(wStep>=steps.length)wStep=steps.length-1;const st=steps[wStep];
-  $('#w-step').textContent=`Paso ${wStep+1} de ${steps.length}`;$('#w-bar').style.width=((wStep+1)/steps.length*100)+'%';
-  $('#w-title').textContent=st.t;$('#w-help').textContent=st.h||'';
+/* ---------- ventana ---------- */
+const mix=(hex,p)=>'#'+[1,3,5].map(i=>Math.round(parseInt(hex.slice(i,i+2),16)*p+255*(1-p)).toString(16).padStart(2,'0')).join('');
+function tintDlg(dl,hex){const c=hex||'#FFFFFF';dl.style.setProperty('--ac',c);dl.style.setProperty('--at',hex?textOn(c):'#1E2A44');dl.style.setProperty('--ae',hex?edge(c):'#DCD4C7');dl.style.setProperty('--tint',hex?mix(c,.2):'#FFFFFF')}
+let lastKey='intro',skipAdv=false;
+function drawStep(){
+  const steps=getSteps();let i=steps.findIndex(x=>x.k===wKey);if(i<0)i=Math.max(0,Math.min(wIdx,steps.length-1));wIdx=i;const st=steps[i];wKey=st.k;if(!resume)lastKey=wKey;
+  const sc=st.sec?SECS.indexOf(st.sec):-1,inS=steps.filter(x=>x.sec===st.sec),fr=sc<0?0:(sc+(inS.indexOf(st)+1)/(inS.length+1))/SECS.length;
+  $('#w-step').textContent=st.sec?SEC[st.sec][0]:'Guía';$('#w-bar').style.width=(st.last?100:Math.round(fr*100))+'%';
+  $('#w-title').textContent=st.t;$('#w-help').textContent=st.h||'';$('#w-help').hidden=!st.h;
+  const ai=st.sec?SEC[st.sec][1]:null,dl=$('#wiz .dialog');tintDlg(dl,ai==null||st.clash?null:area(areaByIndex(ai)).color);dl.classList.toggle('clashing',!!st.clash);
   const b=$('#w-body');b.innerHTML='';flush=null;st.r(b);
-  $('#w-back').style.visibility=wStep>0?'visible':'hidden';
-  $('#w-skip').hidden=!!st.last||wStep===0;
-  $('#w-next').textContent=st.last?'Crear mi semana':(wStep===0?'Empezar':'Siguiente');
-  const dl=$('#wiz .dialog');if(!keepFocus)dl.scrollTop=0;if(!keepFocus&&!matchMedia('(pointer:coarse)').matches)setTimeout(()=>{const f=b.querySelector('input,button:not(.stp),select');if(f)f.focus()},20);
+  $('#w-back').style.visibility=i>0?'visible':'hidden';
+  const sk=$('#w-skip');sk.hidden=!(st.skip||st.later)||!!st.last;sk.textContent=st.later?'Lo dejo para luego':'Saltar';
+  $('#w-next').hidden=!!st.choice&&st.choice()==null;
+  $('#w-next').textContent=st.last?'Crear mi semana':(st.k==='intro'?'Empezar':'Siguiente');
+  drawnAt=performance.now();
+  b.scrollTop=0;dl.scrollTop=0;if(!matchMedia('(pointer:coarse)').matches)setTimeout(()=>{const f=b.querySelector('input,button:not(.stp),select')||$('#w-next');if(f)f.focus({preventScroll:true})},20);
 }
-function move(dir,noFlush){const n=getSteps().length;const i=wStep+dir;if(i<0||i>=n)return;if(flush&&!noFlush&&flush(dir>0)===false)return;wStep=i;drawStep()}
+/* avanzar: si la pantalla actual ya no existe (choque resuelto), se queda en su sitio y sale la siguiente */
+function adv(){if(skipAdv){skipAdv=false;drawStep();return}const steps=getSteps(),i=steps.findIndex(x=>x.k===wKey);if(i>=0){if(i+1<steps.length){wIdx=i+1;wKey=steps[i+1].k}}else if(steps[wIdx])wKey=steps[wIdx].k;drawStep()}
+function move(dir){if(flush&&flush(dir>0)===false)return;if(dir>0){adv();return}const steps=getSteps(),i=steps.findIndex(x=>x.k===wKey);if(i>0){wIdx=i-1;wKey=steps[i-1].k;drawStep()}}
+function skipStep(){
+  const old=getSteps(),i=old.findIndex(x=>x.k===wKey),st=old[i];(st.later||st.skip)();
+  const now=getSteps(),ks=now.map(x=>x.k);
+  if(st.clash){adv();return}
+  const nx=old.slice(i+1).find(x=>x.grp!==st.grp&&ks.includes(x.k)&&(!st.sec||!(st.grp===st.sec&&x.sec===st.sec&&x.grp!=='cl')));
+  wKey=nx?nx.k:'fin';drawStep();
+}
 function finishWizard(){
-  const ev=buildEvents();if(!ev.length){$('#wiz').hidden=true;return}
-  commit();const items=ev.map(e=>Object.assign({id:nid()},e));
-  S.events=(W.mode==='add'&&S.events.length)?S.events.concat(items):items;
-  const P=parseT,wakes=[W.wake,W.weekendDiff?W.wkWake:null].map(P).filter(x=>x!=null);
-  const beds=[W.bed,W.weekendDiff?W.wkBed:null].map(P).filter(x=>x!=null).map(t=>t<12*60?1440:t);
-  if(wakes.length)S.from=Math.max(0,Math.floor(Math.min(...wakes)/60)-1);
-  if(beds.length)S.to=Math.min(24,Math.ceil(Math.max(...beds)/60)+1);
+  const ev=buildEvents(),pend=pendList();if(!ev.length&&!pend.length){$('#wiz').hidden=true;return}
+  commit();const items=ev.map(e=>{const x=Object.assign({id:nid()},e);delete x.key;delete x.it;return x}),add=W.mode==='add'&&S.events.length;
+  S.events=add?S.events.concat(items):items;
+  S.pend=(add?S.pend||[]:[]).concat(pend.map(p=>({id:nid(),t:p.t,a:p.a})));S.okc=uniq((add?S.okc||[]:[]).concat(W.okc));
+  const P=parseT;
+  if(sleepOn()){
+    const wakes=[W.wake,wkdOn()?W.wkWake:null].map(P).filter(x=>x!=null),beds=[W.bed,wkdOn()?W.wkBed:null].map(P).filter(x=>x!=null).map(t=>t<12*60?1440:t);
+    if(wakes.length)S.from=Math.max(0,Math.floor(Math.min(...wakes)/60)-1);
+    if(beds.length)S.to=Math.min(24,Math.ceil(Math.max(...beds)/60)+1);
+  }
   if(S.to<=S.from)S.to=Math.min(24,S.from+1);
   const vis=ev.filter(e=>!['Dormir','Desconectar'].includes(e.title));
   if(vis.length){S.from=Math.min(S.from,Math.floor(Math.min(...vis.map(e=>e.start))/60));S.to=Math.max(S.to,Math.min(24,Math.ceil(Math.max(...vis.map(e=>e.end))/60)))}
-  if(ev.some(e=>!['Dormir','Desconectar','Desayuno','Comida','Cena'].includes(e.title)&&e.day>=S.days))S.days=7;
-  selected=null;$('#wiz').hidden=true;renderAll();$('#calendar').scrollTop=0;if(phone()){mv.mode='semana';renderCal()}else if(innerWidth<=900)$('#calendar').scrollIntoView({behavior:'smooth',block:'start'});
+  if(ev.some(e=>!['Dormir','Desconectar','Desayuno','Comida','Cena','Cocinar la comida','Cocinar la cena'].includes(e.title)&&e.day>=S.days))S.days=7;
+  W.done=true;hello=false;selected=null;$('#wiz').hidden=true;renderAll();$('#calendar').scrollTop=0;if(phone()){mv.mode='semana';renderCal()}else if(innerWidth<=900)$('#calendar').scrollIntoView({behavior:'smooth',block:'start'});
 }
-$('#open-guide').addEventListener('click',()=>{W=W0();wStep=0;$('#wiz').hidden=false;drawStep()});
+$('#open-guide').addEventListener('click',()=>{
+  if(W.done){W=W0();wKey=lastKey='intro'}
+  resume=lastKey!=='intro'&&!W.done;if(resume)wKey='resume';$('#wiz').hidden=false;drawStep()});
 $('#w-close').addEventListener('click',()=>{$('#wiz').hidden=true});
 $('#w-back').addEventListener('click',()=>move(-1));
-$('#w-skip').addEventListener('click',()=>move(1,true));
-$('#w-next').addEventListener('click',()=>{const st=getSteps()[wStep];if(st.last)finishWizard();else move(1)});
+$('#w-skip').addEventListener('click',skipStep);
+$('#w-next').addEventListener('click',()=>{const st=getSteps().find(x=>x.k===wKey);if(st&&st.last)finishWizard();else move(1)});
+
+/* ---------- por colocar y choques, encima del calendario ---------- */
+function renderNotes(){
+  const n=$('#notes');n.innerHTML='';const cl=clashes(S.events,S.okc),pd=S.pend||[];
+  n.hidden=!cl.length&&!pd.length;if(n.hidden)return;
+  if(cl.length){const b=el('button','nt bad');b.type='button';b.append(el('b',null,'!'),document.createTextNode(cl.length===1?'1 choque de horario':cl.length+' choques de horario'));b.addEventListener('click',()=>openFix('clash'));n.appendChild(b)}
+  if(pd.length){n.appendChild(el('span','lbl','Por colocar'));pd.forEach(p=>{const b=el('button','nt');b.type='button';const c=area(p.a).color;b.style.background=c;b.style.color=textOn(c);b.style.borderColor=edge(c);b.textContent=p.t;b.addEventListener('click',()=>openFix('pend',p.id));n.appendChild(b)})}
+}
+const clashIds=()=>{const s=new Set();clashes(S.events,S.okc).forEach(g=>g.pairs.forEach(p=>{s.add(p.A.id);s.add(p.B.id)}));return s};
+let fixDur=60;
+function closeFix(){$('#fix').hidden=true}
+function openFix(kind,id){
+  const b=$('#fix-body');b.innerHTML='';$('#fix').hidden=false;$('#fix .dialog').scrollTop=0;drawnAt=performance.now();
+  if(kind==='clash'){
+    const g=clashes(S.events,S.okc)[0];tintDlg($('#fix .dialog'),null);$('#fix .dialog').classList.add('clashing');
+    if(!g){closeFix();return}
+    $('#fix-h').textContent='Tienes dos cosas a la vez';$('#fix-p').textContent='«'+g.a+'» y «'+g.b+'» no caben en el mismo rato. ¿Qué cambiamos?';
+    clashUI(b,g,{start:commit,evs:()=>S.events,
+      set:(e,l)=>{const c=Object.assign({},e);S.events=S.events.filter(x=>x!==e);l.forEach(x=>S.events.push(Object.assign({},c,{id:nid(),day:x.d,start:x.s,end:x.e})))},
+      pend:e=>{(S.pend=S.pend||[]).push({id:nid(),t:evName(e),a:e.area})},ok:k=>{(S.okc=S.okc||[]).push(k)},
+      then:()=>{selected=null;fitHours();renderAll();openFix('clash')}});
+    return;
+  }
+  const p=(S.pend||[]).find(x=>x.id===id);if(!p){closeFix();return}
+  tintDlg($('#fix .dialog'),area(p.a).color);$('#fix .dialog').classList.remove('clashing');
+  $('#fix-h').textContent=p.t;$('#fix-p').textContent='Elige cuánto rato y dónde lo pongo.';
+  const ch=el('div','chips');b.appendChild(ch);const box=el('div','opts');b.appendChild(box);
+  const draw=()=>{ch.innerHTML='';[15,30,45,60,90,120].forEach(m=>{const c=el('button','chip big',fmtDur(m));c.type='button';c.setAttribute('aria-pressed',m===fixDur);c.addEventListener('click',()=>{fixDur=m;draw()});ch.appendChild(c)});
+    box.innerHTML='';const ex=p.a===areaByIndex(1),pm=allSlots(S.events,fixDur,'t',ex),L=pm.concat(allSlots(S.events,fixDur,'m',ex)).slice(0,7);
+    L.forEach(x=>{const o=bigOpt('button',slotTxt(x,fixDur));o.addEventListener('click',()=>{if(!ready())return;commit();S.events.push({id:nid(),day:x.d,start:x.s,end:x.s+fixDur,title:p.t,area:p.a,once:true});S.pend=S.pend.filter(y=>y!==p);fitHours();selected=null;closeFix();renderAll()});box.appendChild(o)});
+    if(!L.length)box.appendChild(el('p','note','No queda ningún hueco de '+fmtDur(fixDur)+'. Prueba con menos rato, o quita algo del calendario.'));
+    const rm=el('button','linkbtn','Ya no lo necesito');rm.type='button';rm.addEventListener('click',()=>{commit();S.pend=S.pend.filter(y=>y!==p);closeFix();renderAll()});box.appendChild(rm)};
+  draw();
+}
+function fitHours(){S.events.forEach(e=>{if(e.title==='Dormir'||e.title==='Desconectar')return;if(e.start<S.from*60)S.from=Math.floor(e.start/60);if(e.end>S.to*60)S.to=Math.min(24,Math.ceil(e.end/60))})}
+$('#fix-x').addEventListener('click',closeFix);
+$('#fix').addEventListener('pointerdown',ev=>{if(ev.target.id==='fix')closeFix()});
 
 /* ---------- panel: eventos ---------- */
-$('#f-title').addEventListener('input',ev=>{S.title=ev.target.value;$('#h-title').textContent=S.title||'Mi semana'});
-$('#f-sub').addEventListener('input',ev=>{S.sub=ev.target.value;$('#h-sub').textContent=S.sub});
 $('#f-from').addEventListener('change',ev=>{commit();S.from=+ev.target.value;if(S.to<=S.from)S.to=Math.min(24,S.from+1);syncPanel();renderCal()});
 $('#f-to').addEventListener('change',ev=>{commit();S.to=+ev.target.value;if(S.to<=S.from)S.from=Math.max(0,S.to-1);syncPanel();renderCal()});
 $('#d7').addEventListener('click',()=>{S.days=7;syncPanel();renderCal()});
@@ -1211,7 +1492,7 @@ $('#add-area').addEventListener('click',()=>{commit();const last=S.areas[S.areas
 $('#undo').addEventListener('click',undo);
 $('#pdf').addEventListener('click',()=>window.print());
 function resetClear(){const w=$('#clear-wrap');w.innerHTML='';const b=el('button','btn ghost wide','Vaciar la semana');b.type='button';b.addEventListener('click',askClear);w.appendChild(b)}
-function askClear(){const w=$('#clear-wrap');w.innerHTML='';const c=el('div','confirm');c.append(el('span',null,'¿Borrar todos los bloques?'));const y=el('button','btn','Sí, vaciar');y.type='button';y.addEventListener('click',()=>{commit();S.events=[];S.sub='';selected=null;resetClear();renderAll()});const n=el('button','btn ghost','No');n.type='button';n.addEventListener('click',resetClear);c.append(y,n);w.appendChild(c)}
+function askClear(){const w=$('#clear-wrap');w.innerHTML='';const c=el('div','confirm');c.append(el('span',null,'¿Borrar todos los bloques?'));const y=el('button','btn','Sí, vaciar');y.type='button';y.addEventListener('click',()=>{commit();S.events=[];S.pend=[];S.okc=[];selected=null;resetClear();renderAll()});const n=el('button','btn ghost','No');n.type='button';n.addEventListener('click',resetClear);c.append(y,n);w.appendChild(c)}
 $('#clear').addEventListener('click',askClear);
 $('#sample').addEventListener('click',()=>{
   commit();const g=i=>areaByIndex(i);const ev=[];
@@ -1220,13 +1501,12 @@ $('#sample').addEventListener('click',()=>{
   add([0,1,2,3,4],14.5,15.5,'Comida',6);add([1,3],19.5,20.5,'Paseo',1);add([2],20.5,22,'Cena con amigos',3);
   add([5],10,12,'Recados y compra',5);add([5,6],17,19,'Serie o lectura',4);add([6],11,13,'Familia',3);
   add([0,1,2,3,4,5,6],22.5,23,'Desconectar',2);
-  S.events=ev;S.sub='Ejemplo: bórralo con «Vaciar la semana»';selected=null;renderAll();
+  S.events=ev;S.pend=[];S.okc=[];hello=false;selected=null;renderAll();
 });
 
 /* ---------- ayudas (?) ---------- */
 const HELP={
- guia:['Guía paso a paso','Te hace una pregunta cada vez (sueño, trabajo o clases, comidas, ejercicio, citas) y crea la semana sola. Luego puedes cambiar cualquier bloque a mano.'],
- calendario:['La cuadrícula','Arrastra en un hueco para crear un bloque y arrástralo para moverlo. Tira del borde de abajo para alargarlo y púlsalo para editarlo.','El título y el subtítulo salen arriba y en el PDF.'],
+ guia:['Guía paso a paso','Una pregunta por pantalla. Lo que no sepas, lo dejas para luego o le buscas un hueco. Si dos cosas caen a la vez, te avisa. Al final crea la semana y puedes cambiar cualquier bloque a mano.'],
  areas:['Áreas','Son las partes de tu semana, cada una con su color. Elige una y dibuja: los bloques nuevos salen de ese color.','Pulsa el cuadrado para cambiar el color y el nombre para renombrarla. El candado fija el color, aunque cambies de paleta. «Intercambiar colores» cambia entre sí el color de dos áreas: pulsas el botón, tocas una y luego la otra. Se puede deshacer.'],
  paletas:['Paletas','Un clic cambia los colores de todas las áreas, menos las que tengan candado. En casi todas, sueño, trabajo o estudios y comidas son colores claros y el resto van más marcados. «Atardecer» sale de la marca de Fer. «Accesible» está pensada para que se distingan también con daltonismo. Con «Editar la paleta» haces la tuya.'],
  aleatorios:['Colores aleatorios','Prueba una combinación nueva cada vez que lo pulsas. Las áreas con candado no cambian. Si no te gusta, «Deshacer».'],
@@ -1528,7 +1808,7 @@ function drawGoogleAuto(o,res){
 /* ---------- enlace con la semana dentro (va detrás de #, no se envía a ningún servidor) ---------- */
 const b64e=t=>{let b='';new TextEncoder().encode(t).forEach(x=>b+=String.fromCharCode(x));return btoa(b).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'')};
 const b64d=t=>new TextDecoder().decode(Uint8Array.from(atob(t.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0)));
-function packWeek(){return b64e(JSON.stringify({v:1,t:S.title,s:S.sub,f:S.from,o:S.to,d:S.days,a:S.areas.map(a=>[a.name,a.color]),e:S.events.filter(e=>!e._ghost).map(e=>[e.day,e.start,e.end,e.title||'',S.areas.findIndex(a=>a.id===e.area),e.once?1:0])}))}
+function packWeek(){return b64e(JSON.stringify({v:1,t:S.title,s:S.sub,f:S.from,o:S.to,d:S.days,a:S.areas.map(a=>[a.name,a.color]),e:S.events.filter(e=>!e._ghost).map(e=>[e.day,e.start,e.end,e.title||'',S.areas.findIndex(a=>a.id===e.area),e.once?1:0]),p:(S.pend||[]).map(x=>[x.t,Math.max(0,S.areas.findIndex(a=>a.id===x.a))]),c:S.okc||[]}))}
 const weekLink=()=>location.href.split('#')[0]+'#semana='+packWeek();
 function setHash(){try{history.replaceState(null,'','#semana='+packWeek())}catch(e){}}
 async function copyText(t){try{await navigator.clipboard.writeText(t);return true}catch(e){try{const x=el('textarea');x.value=t;x.style.cssText='position:fixed;opacity:0';document.body.appendChild(x);x.select();const ok=document.execCommand('copy');x.remove();return ok}catch(e2){return false}}}
@@ -1540,15 +1820,17 @@ function loadHash(){
     if(k.v!==1||!str(k.t,80)||!str(k.s,120)||!num(k.f,0,23)||!num(k.o,1,24)||k.o<=k.f||!(k.d===5||k.d===7))return false;
     if(!Array.isArray(k.a)||!k.a.length||k.a.length>30||!k.a.every(x=>Array.isArray(x)&&str(x[0],60)&&/^#[0-9a-f]{6}$/i.test(x[1])))return false;
     if(!Array.isArray(k.e)||k.e.length>400||!k.e.every(x=>Array.isArray(x)&&num(x[0],0,6)&&num(x[1],0,1439)&&num(x[2],1,1440)&&x[2]>x[1]&&str(x[3],120)&&num(x[4],0,k.a.length-1)))return false;
-    commit();S.title=k.t;S.sub=k.s;S.from=k.f;S.to=k.o;S.days=k.d;S.preset=null;
+    commit();S.from=k.f;S.to=k.o;S.days=k.d;S.preset=null;
     S.areas=k.a.map(x=>({id:nid(),name:x[0],color:x[1],locked:false}));brush=S.areas[0].id;
     S.events=k.e.map(x=>{const e={id:nid(),day:x[0],start:x[1],end:x[2],title:x[3],area:S.areas[x[4]].id};if(x[5])e.once=true;return e});
-    selected=null;mv.mode='semana';renderAll();return true;
+    S.pend=(Array.isArray(k.p)?k.p.slice(0,40):[]).filter(x=>Array.isArray(x)&&str(x[0],120)&&num(x[1],0,k.a.length-1)).map(x=>({id:nid(),t:x[0],a:S.areas[x[1]].id}));S.okc=(Array.isArray(k.c)?k.c.slice(0,60):[]).filter(x=>str(x,250));
+    hello=false;selected=null;mv.mode='semana';renderAll();return true;
   }catch(e){return false}
 }
 window.addEventListener('hashchange',loadHash);
 
 /* ---------- móvil: barra, ajustes y avisos ---------- */
+$('#wl-go').addEventListener('click',()=>$('#open-guide').click());$('#wl-ex').addEventListener('click',()=>$('#sample').click());$('#wl-hand').addEventListener('click',()=>{hello=false;renderCal()});
 $('#m-logo').appendChild(document.querySelector('.brand .logo svg').cloneNode(true));
 function openPanel(){$('#panel').classList.add('open');$('#m-scrim').classList.add('on');$('#panel').scrollTop=0}
 function closePanel(){closePop();$('#panel').classList.remove('open');$('#m-scrim').classList.remove('on')}
@@ -1565,13 +1847,13 @@ $('#q-more').addEventListener('click',()=>{const b=$('#q-more'),on=b.getAttribut
 ['c-start','c-rep','c-tz','r-cambio','r-cita','r-susc','r-day'].forEach(i=>$('#'+i).addEventListener('change',()=>{if(!$('#c-quick').hidden)drawQuick()}));
 $('#c-areas').addEventListener('click',()=>{if(!$('#c-quick').hidden)drawQuick()});
 
-if(matchMedia('(pointer:coarse)').matches){const bs=document.querySelector('.brand small');if(bs)bs.textContent='Mantén pulsado en la cuadrícula y arrastra para crear un bloque.'}
+if(!phone())$('#fold-areas').open=true;
 /* ---------- teclado ---------- */
 document.addEventListener('keydown',ev=>{
   const typing=/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName);
-  if(ev.key==='Escape'){hideTip();if(!$('#info-dlg').hidden){closeInfo();return}if(swap.on){endSwap();return}if($('#panel').classList.contains('open')&&$('#pop').hidden){closePanel();return}if(!$('#pop').hidden){closePop();return}if(!$('#cal-dlg').hidden){closeCal();return}if(!$('#scrim').hidden){cancelEditor();return}if(!$('#wiz').hidden){$('#wiz').hidden=true;return}}
+  if(ev.key==='Escape'){hideTip();if(!$('#info-dlg').hidden){closeInfo();return}if(swap.on){endSwap();return}if($('#panel').classList.contains('open')&&$('#pop').hidden){closePanel();return}if(!$('#pop').hidden){closePop();return}if(!$('#cal-dlg').hidden){closeCal();return}if(!$('#scrim').hidden){cancelEditor();return}if(!$('#fix').hidden){closeFix();return}if(!$('#wiz').hidden){$('#wiz').hidden=true;return}}
   if((ev.metaKey||ev.ctrlKey)&&ev.key.toLowerCase()==='z'&&!typing){ev.preventDefault();undo();return}
-  if((ev.key==='Delete'||ev.key==='Backspace')&&selected&&!typing&&$('#scrim').hidden&&$('#wiz').hidden&&$('#cal-dlg').hidden){commit();S.events=S.events.filter(e=>e.id!==selected);selected=null;renderCal();renderLegend()}
+  if((ev.key==='Delete'||ev.key==='Backspace')&&selected&&!typing&&$('#scrim').hidden&&$('#wiz').hidden&&$('#cal-dlg').hidden&&$('#fix').hidden){commit();S.events=S.events.filter(e=>e.id!==selected);selected=null;renderCal();renderLegend()}
 });
 
 /* ---------- PDF: ajustar la altura a una hoja ---------- */
