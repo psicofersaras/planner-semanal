@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Planner semanal</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2215%22 fill=%22%231E2A44%22/%3E%3Crect x=%2210%22 y=%2214%22 width=%2211%22 height=%2230%22 rx=%223.5%22 fill=%22%23C2694B%22/%3E%3Crect x=%2226.5%22 y=%2222%22 width=%2211%22 height=%2228%22 rx=%223.5%22 fill=%22%236FB08F%22/%3E%3Crect x=%2243%22 y=%2212%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%23E3AE45%22/%3E%3Crect x=%2243%22 y=%2233%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%237FB9D6%22/%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2215%22 fill=%22%231E2A44%22/%3E%3Crect x=%2210%22 y=%2214%22 width=%2211%22 height=%2230%22 rx=%223.5%22 fill=%22%23C2694B%22/%3E%3Crect x=%2226.5%22 y=%2222%22 width=%2211%22 height=%2228%22 rx=%223.5%22 fill=%22%236FB08F%22/%3E%3Crect x=%2243%22 y=%2212%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%23E3AE45%22/%3E%3Crect x=%2243%22 y=%2233%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%237FB9D6%22/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2215%22 fill=%22%231E2A44%22/%3E%3Crect x=%2210%22 y=%2214%22 width=%2211%22 height=%2230%22 rx=%223.5%22 fill=%22%23A85128%22/%3E%3Crect x=%2226.5%22 y=%2222%22 width=%2211%22 height=%2228%22 rx=%223.5%22 fill=%22%236FB08F%22/%3E%3Crect x=%2243%22 y=%2212%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%23E3AE45%22/%3E%3Crect x=%2243%22 y=%2233%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%237FB9D6%22/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2215%22 fill=%22%231E2A44%22/%3E%3Crect x=%2210%22 y=%2214%22 width=%2211%22 height=%2230%22 rx=%223.5%22 fill=%22%23A85128%22/%3E%3Crect x=%2226.5%22 y=%2222%22 width=%2211%22 height=%2228%22 rx=%223.5%22 fill=%22%236FB08F%22/%3E%3Crect x=%2243%22 y=%2212%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%23E3AE45%22/%3E%3Crect x=%2243%22 y=%2233%22 width=%2211%22 height=%2217%22 rx=%223.5%22 fill=%22%237FB9D6%22/%3E%3C/svg%3E">
 <meta name="robots" content="noindex">
 <meta name="description" content="Planifica tu semana por bloques de color y llévala a tu calendario. Todo ocurre en tu navegador.">
 <style>
@@ -20,7 +20,7 @@
   --muted:#6A7389;
   --line:#ECE6DC;
   --line-strong:#DCD4C7;
-  --accent:#C2694B;
+  --accent:#A85128;
   --focus:#7C93C3;
   --display:"Fraunces", Georgia, "Times New Roman", serif;
   --body:"Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -124,8 +124,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 
 .empty{position:absolute;inset:40px 0 0 57px;display:grid;place-items:center;pointer-events:none}
 .empty div{background:rgba(255,255,255,.94);border:1px dashed var(--line-strong);border-radius:14px;padding:16px 20px;text-align:center;max-width:360px;color:var(--muted)}
-.empty .go{pointer-events:auto;cursor:pointer;font:inherit;font-weight:700;color:var(--ink);background:none;border:0;border-bottom:1.5px solid var(--accent);border-radius:0;padding:0 1px}
-.empty .go:hover{color:var(--accent)}
+.empty .go{pointer-events:auto;margin-top:12px}
 .empty b{display:block;color:var(--ink);font:600 16px/1.3 var(--display);margin-bottom:4px}
 
 /* ---------- diálogos ---------- */
@@ -253,7 +252,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 <body>
 <div class="app">
   <aside class="panel" aria-label="Ajustes">
-    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#C2694B"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Arrastra en la cuadrícula para crear un bloque.</small><small class="handle">@psicofersaras</small></span></div>
+    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#A85128"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Arrastra en la cuadrícula para crear un bloque.</small><small class="handle">@psicofersaras</small></span></div>
 
     <div class="withq"><button class="btn guide" id="open-guide" type="button">Guía paso a paso</button><button class="q" type="button" data-help="guia" aria-label="Cómo funciona: la guía" aria-expanded="false">?</button></div>
 
@@ -618,7 +617,7 @@ function renderCal(){
     inner.appendChild(col);
   }
   cal.appendChild(inner);
-  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>La semana está en blanco</b>Pulsa «<button class="go" type="button">Guía paso a paso</button>» para montarla con preguntas, o elige un área y arrastra en la cuadrícula.</div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
+  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>La semana está en blanco</b>Móntala con unas preguntas, o elige un área y arrastra en la cuadrícula.<br><button class="btn guide go" type="button">Guía paso a paso</button></div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
   cal.scrollTop=keep;
 }
 function evNode(e,from,to){
@@ -1176,19 +1175,19 @@ $('#c-back').addEventListener('click',()=>{$('#c-form').hidden=false;$('#c-done'
 const SVF='<rect x="1" y="1" width="358" height="158" rx="10" fill="#fff" stroke="#DCD4C7"/><rect x="1" y="1" width="358" height="20" rx="10" fill="#F3EFE8"/><rect x="1" y="12" width="358" height="9" fill="#F3EFE8"/><circle cx="14" cy="11" r="3" fill="#DCD4C7"/><circle cx="25" cy="11" r="3" fill="#DCD4C7"/><circle cx="36" cy="11" r="3" fill="#DCD4C7"/>';
 const sv=x=>'<svg viewBox="0 0 360 160" role="img" aria-hidden="true">'+SVF+x+'</svg>';
 const gl=(x,y,w)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="6" rx="3" fill="#E6E0D5"/>';
-const hlb=(x,y,w,h,t,sz)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6" fill="#FBEFE9" stroke="#C2694B" stroke-width="2"/><text x="'+(x+w/2)+'" y="'+(y+h/2+3.5)+'" text-anchor="middle" font-size="'+(sz||10)+'" font-family="Inter,sans-serif" fill="#1E2A44" font-weight="600">'+t+'</text>';
+const hlb=(x,y,w,h,t,sz)=>'<rect x="'+x+'" y="'+y+'" width="'+w+'" height="'+h+'" rx="6" fill="#FBEFE9" stroke="#A85128" stroke-width="2"/><text x="'+(x+w/2)+'" y="'+(y+h/2+3.5)+'" text-anchor="middle" font-size="'+(sz||10)+'" font-family="Inter,sans-serif" fill="#1E2A44" font-weight="600">'+t+'</text>';
 const tx=(x,y,t,c,sz,w)=>'<text x="'+x+'" y="'+y+'" font-size="'+(sz||9)+'" font-family="Inter,sans-serif" fill="'+(c||'#6A7389')+'"'+(w?' font-weight="'+w+'"':'')+'>'+t+'</text>';
 const cur=(x,y)=>'<path d="M'+x+' '+y+'l0 15 4-3.5 3 7 3-1.3-3-6.6 5.2 0z" fill="#1E2A44" stroke="#fff" stroke-width="1"/>';
 const grid=(x0)=>{let g='';for(let i=0;i<5;i++)g+='<rect x="'+(x0+i*44)+'" y="30" width="1" height="120" fill="#EFE9DF"/>';return g+'<rect x="'+(x0+6)+'" y="46" width="34" height="26" rx="4" fill="#E6E0D5"/><rect x="'+(x0+50)+'" y="86" width="34" height="34" rx="4" fill="#E6E0D5"/><rect x="'+(x0+138)+'" y="56" width="34" height="22" rx="4" fill="#E6E0D5"/>'};
 const ART={
  web:()=>sv(hlb(70,3,220,15,'calendar.google.com',9)+grid(70)+tx(14,60,'Solo desde un',null,9)+tx(14,73,'ordenador',null,9)+'<rect x="10" y="84" width="46" height="30" rx="4" fill="#fff" stroke="#C9C1B3"/><rect x="14" y="88" width="38" height="20" rx="2" fill="#F3EFE8"/><rect x="6" y="116" width="54" height="5" rx="2.5" fill="#C9C1B3"/>'),
  crear:()=>sv(gl(14,34,70)+gl(14,48,54)+hlb(10,64,112,22,'Otros calendarios  +',9)+'<rect x="132" y="70" width="150" height="76" rx="8" fill="#fff" stroke="#DCD4C7"/>'+gl(142,82,90)+hlb(138,98,138,22,'Crear un calendario',9)+gl(142,130,70)+cur(262,108)+'<rect x="300" y="30" width="1" height="120" fill="#EFE9DF"/>'),
- gear:()=>sv(gl(14,34,80)+gl(14,48,60)+'<circle cx="300" cy="38" r="3" fill="#DCD4C7"/><circle cx="324" cy="38" r="12" fill="#FBEFE9" stroke="#C2694B" stroke-width="2"/><circle cx="324" cy="38" r="3.8" fill="#1E2A44"/><rect x="226" y="58" width="122" height="64" rx="8" fill="#fff" stroke="#DCD4C7"/>'+hlb(232,64,110,22,'Configuración',9)+gl(238,98,80)+gl(238,110,60)+cur(318,76)),
+ gear:()=>sv(gl(14,34,80)+gl(14,48,60)+'<circle cx="300" cy="38" r="3" fill="#DCD4C7"/><circle cx="324" cy="38" r="12" fill="#FBEFE9" stroke="#A85128" stroke-width="2"/><circle cx="324" cy="38" r="3.8" fill="#1E2A44"/><rect x="226" y="58" width="122" height="64" rx="8" fill="#fff" stroke="#DCD4C7"/>'+hlb(232,64,110,22,'Configuración',9)+gl(238,98,80)+gl(238,110,60)+cur(318,76)),
  menu:()=>sv(hlb(10,34,132,24,'Importar y exportar',10)+gl(20,72,90)+gl(20,88,70)+gl(20,104,100)+'<rect x="156" y="30" width="1" height="124" fill="#EFE9DF"/>'+gl(172,40,120)+gl(172,58,170)+gl(172,76,90)+cur(122,48)),
  file:()=>sv(tx(18,42,'Importar','#1E2A44',12,'700')+hlb(18,52,230,24,'Seleccionar archivo de tu ordenador',9.5)+'<rect x="18" y="84" width="120" height="18" rx="9" fill="#F3EFE8" stroke="#DCD4C7"/>'+tx(30,96,'mi-semana.ics','#1E2A44',9,'600')+tx(18,122,'Añadir al calendario')+hlb(18,128,170,22,'Planner semanal  ▾',9.5)+cur(236,66)),
- go:()=>sv(tx(18,42,'Importar','#1E2A44',12,'700')+'<rect x="18" y="52" width="230" height="24" rx="6" fill="#fff" stroke="#DCD4C7"/>'+tx(30,67,'mi-semana.ics')+'<rect x="18" y="84" width="170" height="22" rx="6" fill="#fff" stroke="#DCD4C7"/>'+tx(30,99,'Planner semanal  ▾')+'<rect x="204" y="112" width="86" height="28" rx="14" fill="#C2694B" stroke="#C2694B" stroke-width="2"/>'+tx(247,130,'Importar','#fff',11,'700').replace('<text','<text text-anchor="middle"')+cur(262,126)),
+ go:()=>sv(tx(18,42,'Importar','#1E2A44',12,'700')+'<rect x="18" y="52" width="230" height="24" rx="6" fill="#fff" stroke="#DCD4C7"/>'+tx(30,67,'mi-semana.ics')+'<rect x="18" y="84" width="170" height="22" rx="6" fill="#fff" stroke="#DCD4C7"/>'+tx(30,99,'Planner semanal  ▾')+'<rect x="204" y="112" width="86" height="28" rx="14" fill="#A85128" stroke="#A85128" stroke-width="2"/>'+tx(247,130,'Importar','#fff',11,'700').replace('<text','<text text-anchor="middle"')+cur(262,126)),
  doc:()=>sv('<rect x="30" y="38" width="64" height="82" rx="6" fill="#fff" stroke="#C9C1B3" stroke-width="1.5"/><rect x="40" y="50" width="30" height="5" rx="2.5" fill="#E6E0D5"/><rect x="40" y="62" width="44" height="5" rx="2.5" fill="#E6E0D5"/><rect x="40" y="74" width="40" height="5" rx="2.5" fill="#E6E0D5"/>'+hlb(14,126,100,22,'mi-semana.ics',10)+tx(150,60,'Haz doble clic (o tócalo)','#1E2A44',11,'600')+tx(150,78,'en Descargas o en Archivos.')+cur(98,134)),
- ask:()=>sv('<rect x="70" y="34" width="220" height="112" rx="10" fill="#fff" stroke="#DCD4C7"/>'+tx(86,56,'¿A qué calendario añadirlo?','#1E2A44',11,'600')+hlb(86,66,188,22,'Un calendario nuevo  ▾',9.5)+gl(86,102,150)+'<rect x="196" y="114" width="78" height="24" rx="12" fill="#C2694B"/>'+tx(235,130,'Añadir','#fff',10.5,'700').replace('<text','<text text-anchor="middle"')+cur(210,128))
+ ask:()=>sv('<rect x="70" y="34" width="220" height="112" rx="10" fill="#fff" stroke="#DCD4C7"/>'+tx(86,56,'¿A qué calendario añadirlo?','#1E2A44',11,'600')+hlb(86,66,188,22,'Un calendario nuevo  ▾',9.5)+gl(86,102,150)+'<rect x="196" y="114" width="78" height="24" rx="12" fill="#A85128"/>'+tx(235,130,'Añadir','#fff',10.5,'700').replace('<text','<text text-anchor="middle"')+cur(210,128))
 };
 const IMP={
  google:{n:'Google Calendar',steps:[
