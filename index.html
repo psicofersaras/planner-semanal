@@ -40,6 +40,19 @@ button{cursor:pointer}
 .brand{font:600 20px/1.2 var(--display);letter-spacing:-.01em}
 .brand{display:flex;gap:11px;align-items:flex-start}
 .brand .logo{flex:none;display:block;line-height:0;margin-top:1px}
+.info-btn{margin-left:auto;flex:none;width:22px;height:22px;border:1px solid var(--line-strong);border-radius:50%;background:var(--sheet);color:var(--muted);font:600 12px/1 var(--display);font-style:italic;display:grid;place-items:center;padding:0;cursor:pointer}
+.info-btn:hover,.info-btn:focus-visible{background:var(--ink);border-color:var(--ink);color:#fff}
+.fb{position:sticky;bottom:-28px;margin:0 -18px -28px;padding:12px 18px 16px;background:var(--paper);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12.5px;line-height:1.35;z-index:3}
+.fb span{color:var(--ink)}
+.fb a.btn{flex:none;text-decoration:none;color:var(--ink);padding:7px 11px;font-size:12.5px;font-weight:600}
+@media (max-width:900px){.fb{position:static;margin:0;padding:12px 0 0}}
+.wiz-top h3{color:var(--ink)}
+.about{display:flex;flex-direction:column;gap:14px;font-size:14px;line-height:1.5}
+.about h4{margin:0 0 3px;font:600 14px/1.3 var(--body)}
+.about p,.about ul{margin:0}
+.about ul{padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.about a{color:var(--accent);font-weight:600}
+.about .small{font-size:12px;color:var(--muted)}
 .brand small.handle{font-weight:600;color:var(--accent);margin-top:2px}
 .brand small.handle a{color:inherit;text-decoration:none}
 .brand small.handle a:hover{text-decoration:underline}
@@ -254,7 +267,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 <body>
 <div class="app">
   <aside class="panel" aria-label="Ajustes">
-    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#A85128"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Arrastra en la cuadrícula para crear un bloque.</small><small class="handle"><a href="https://www.instagram.com/psicofersaras/" target="_blank" rel="noopener noreferrer">@psicofersaras</a></small></span></div>
+    <div class="brand"><span class="logo" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="36" height="36"><rect width="64" height="64" rx="15" fill="#1E2A44"/><rect x="10" y="14" width="11" height="30" rx="3.5" fill="#A85128"/><rect x="26.5" y="22" width="11" height="28" rx="3.5" fill="#6FB08F"/><rect x="43" y="12" width="11" height="17" rx="3.5" fill="#E3AE45"/><rect x="43" y="33" width="11" height="17" rx="3.5" fill="#7FB9D6"/></svg></span><span>Planner semanal<small>Arrastra en la cuadrícula para crear un bloque.</small><small class="handle"><a href="https://www.instagram.com/psicofersaras/" target="_blank" rel="noopener noreferrer">@psicofersaras</a></small></span><button class="info-btn" id="open-info" type="button" aria-label="Sobre este planner" title="Sobre este planner">i</button></div>
 
     <div class="withq"><button class="btn guide" id="open-guide" type="button">Guía paso a paso</button><button class="q" type="button" data-help="guia" aria-label="Cómo funciona: la guía" aria-expanded="false">?</button></div>
 
@@ -309,6 +322,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 
     <p class="privacy">La semana no se guarda: al cerrar o recargar la pestaña, se borra. Expórtala antes de cerrar. Sin nombres ni datos clínicos dentro.</p>
     <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba. Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
+    <div class="fb"><span>¿Tienes ideas para mejorarlo? Cuéntamelas.</span><a class="btn" id="fb-btn" href="https://ig.me/m/psicofersaras" target="_blank" rel="noopener noreferrer">Dar feedback</a></div>
   </aside>
 
   <main class="main">
@@ -389,6 +403,23 @@ input[type=range]{width:100%;accent-color:var(--ink)}
         <p class="note" id="i-link" hidden>Ayuda oficial: <a href="https://support.google.com/calendar/answer/37118?hl=es" target="_blank" rel="noopener noreferrer">importar eventos en Google Calendar</a>. Los dibujos son esquemas, no capturas: los menús pueden cambiar de sitio.</p>
         <div class="dlg-actions"><button class="btn ghost" id="i-back" type="button">Atrás</button><button class="btn primary" id="i-next" type="button">Siguiente</button></div>
       </div>
+    </div>
+  </div>
+</div>
+<!-- sobre el planner -->
+<div class="scrim" id="info-dlg" hidden>
+  <div class="dialog wide" role="dialog" aria-modal="true" aria-labelledby="i-h">
+    <div class="wiz-top"><h3 id="i-h">Hola, soy Fer</h3><button class="btn ghost" id="info-close" type="button">Cerrar</button></div>
+    <div class="about">
+      <p>Soy psicólogo y hice este planner para que organizar la semana sea más fácil y pese menos. Es gratis, sin cuentas y sin letra pequeña.</p>
+      <div><h4>Por qué lo hice</h4><p>Montar la semana de cabeza cansa, y una lista de tareas no te dice si todo cabe. Verla en bloques de color ayuda a ver cuánto tiempo hay y dónde está. Lo empecé para montarla con otras personas y pensé que podía servir a más gente.</p></div>
+      <div><h4>Para qué sirve</h4><ul><li>Ver tu semana en bloques: sueño, trabajo o estudios, comidas y lo que quieras.</li><li>Montarla con una guía de preguntas, o arrastrando en la cuadrícula.</li><li>Llevártela: PDF para imprimir o archivo para tu app de calendario.</li></ul></div>
+      <div><h4>Tu privacidad</h4><p>Todo pasa en tu navegador. No guardo tu semana, no hay cuentas ni cookies y no te pido el correo. Si cierras la pestaña, se borra: por eso conviene exportarla.</p></div>
+      <div><h4>Gratis y de código abierto</h4><p>Cualquiera puede ver cómo está hecho, copiarlo y mejorarlo (licencia MIT). Está en <a href="https://github.com/psicofersaras/planner-semanal" target="_blank" rel="noopener noreferrer">GitHub</a>.</p></div>
+      <div><h4>Lo que no es</h4><p>Es una herramienta para organizarte, no una herramienta clínica: no diagnostica ni sustituye a ningún tratamiento.</p></div>
+      <div><h4>Ayúdame a mejorarlo</h4><p>Está en versión de prueba. Si algo no se entiende, falla o echas algo en falta, me ayuda mucho que me lo cuentes.</p></div>
+      <div class="dlg-actions"><a class="btn primary" href="https://ig.me/m/psicofersaras" target="_blank" rel="noopener noreferrer" style="text-decoration:none">Dar feedback</a><a class="btn ghost" href="https://www.instagram.com/psicofersaras/" target="_blank" rel="noopener noreferrer" style="text-decoration:none">@psicofersaras</a></div>
+      <p class="small">Hecho con cariño por Fer. Tipografías Fraunces e Inter (licencia SIL Open Font License).</p>
     </div>
   </div>
 </div>
@@ -1156,6 +1187,10 @@ function openCal(){
 function closeCal(){closePop();$('#cal-dlg').hidden=true}
 ['r-cambio','r-cita','r-susc'].forEach(id=>$('#'+id).addEventListener('change',()=>{$('#r-when').hidden=!['r-cambio','r-cita','r-susc'].some(x=>$('#'+x).checked)}));
 $('#open-cal').addEventListener('click',()=>{hideTip();openCal()});
+function closeInfo(){$('#info-dlg').hidden=true}
+$('#open-info').addEventListener('click',()=>{closePop();$('#info-dlg').hidden=false;setTimeout(()=>$('#info-close').focus(),20)});
+$('#info-close').addEventListener('click',closeInfo);
+$('#info-dlg').addEventListener('pointerdown',ev=>{if(ev.target.id==='info-dlg')closeInfo()});
 /* aviso de apps compatibles: aparece a la derecha del botón, con desvanecimiento */
 let tipT=null;
 function showTip(){
@@ -1231,7 +1266,7 @@ $('#c-go').addEventListener('click',()=>{
 /* ---------- teclado ---------- */
 document.addEventListener('keydown',ev=>{
   const typing=/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName);
-  if(ev.key==='Escape'){hideTip();if(swap.on){endSwap();return}if(!$('#pop').hidden){closePop();return}if(!$('#cal-dlg').hidden){closeCal();return}if(!$('#scrim').hidden){cancelEditor();return}if(!$('#wiz').hidden){$('#wiz').hidden=true;return}}
+  if(ev.key==='Escape'){hideTip();if(!$('#info-dlg').hidden){closeInfo();return}if(swap.on){endSwap();return}if(!$('#pop').hidden){closePop();return}if(!$('#cal-dlg').hidden){closeCal();return}if(!$('#scrim').hidden){cancelEditor();return}if(!$('#wiz').hidden){$('#wiz').hidden=true;return}}
   if((ev.metaKey||ev.ctrlKey)&&ev.key.toLowerCase()==='z'&&!typing){ev.preventDefault();undo();return}
   if((ev.key==='Delete'||ev.key==='Backspace')&&selected&&!typing&&$('#scrim').hidden&&$('#wiz').hidden&&$('#cal-dlg').hidden){commit();S.events=S.events.filter(e=>e.id!==selected);selected=null;renderCal();renderLegend()}
 });
