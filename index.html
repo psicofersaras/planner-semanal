@@ -125,7 +125,8 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 .hline{position:absolute;left:0;right:0;border-top:1px solid var(--line)}
 .hline.half{border-top-style:dashed;opacity:.6}
 
-.ev{position:absolute;border-radius:8px;padding:4px 7px;overflow:hidden;cursor:grab;touch-action:none;border:1px solid;display:flex;flex-direction:column;gap:1px;line-height:1.2}
+.daycol,.ev{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.ev{position:absolute;border-radius:8px;padding:4px 7px;overflow:hidden;cursor:grab;border:1px solid;display:flex;flex-direction:column;gap:1px;line-height:1.2}
 .ev:active{cursor:grabbing}
 .ev .t{font-weight:600;font-size:12.5px;overflow-wrap:break-word;hyphens:auto;-webkit-hyphens:auto}
 .ev .h{font-size:11px;opacity:.85;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
@@ -321,7 +322,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     </section>
 
     <p class="privacy">La semana no se guarda: al cerrar o recargar la pestaña, se borra. Expórtala antes de cerrar. Sin nombres ni datos clínicos dentro.</p>
-    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v5.8, 24 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
+    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v5.9, 24 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
     <div class="fb"><span>¿Tienes ideas para mejorarlo? Cuéntamelas.</span><a class="btn" id="fb-btn" href="https://ig.me/m/psicofersaras" target="_blank" rel="noopener noreferrer">Dar feedback</a></div>
   </aside>
 
@@ -650,7 +651,7 @@ function renderCal(){
     inner.appendChild(col);
   }
   cal.appendChild(inner);
-  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>La semana está en blanco</b>Móntala con unas preguntas, o elige un área y arrastra en la cuadrícula.<br><button class="btn guide go" type="button">Guía paso a paso</button></div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
+  if(!S.events.length){const em=el('div','empty');em.innerHTML='<div><b>La semana está en blanco</b>Móntala con unas preguntas, o elige un área y '+(matchMedia('(pointer:coarse)').matches?'mantén pulsado y arrastra':'arrastra')+' en la cuadrícula.<br><button class="btn guide go" type="button">Guía paso a paso</button></div>';em.querySelector('.go').addEventListener('click',()=>$('#open-guide').click());cal.appendChild(em)}
   cal.scrollTop=keep;
 }
 function evNode(e,from,to){
@@ -677,21 +678,40 @@ function pointToSlot(x,y){
   const r=cs[d].getBoundingClientRect();
   return{day:d,min:S.from*60+(y-r.top)/S.ppm};
 }
+/* En pantallas táctiles hay que mantener pulsado (0,35 s) para crear o mover un bloque; deslizar solo desplaza la página. */
+let lp=null,touchLock=false;
+function begin(info,node,col){
+  if(node){
+    const e=S.events.find(x=>x.id===node.dataset.id);if(!e)return;
+    const p=pointToSlot(info.x,info.y);
+    drag={mode:info.rz?'resize':'move',e,orig:{day:e.day,start:e.start,end:e.end},grab:p.min-e.start,x:info.x,y:info.y,moved:false};
+    commit();
+  }else if(col){
+    const p=pointToSlot(info.x,info.y);const st=Math.floor(p.min/15)*15;
+    const e={id:nid(),day:+col.dataset.day,start:st,end:st+15,title:'',area:brush,_ghost:true};
+    commit();S.events.push(e);drag={mode:'create',e,anchor:st,x:info.x,y:info.y,moved:false};selected=null;renderCal();
+  }
+}
 $('#calendar').addEventListener('pointerdown',ev=>{
   if(ev.button!==0)return;
   const node=ev.target.closest('.ev');const col=ev.target.closest('.daycol');
-  if(node){
-    const e=S.events.find(x=>x.id===node.dataset.id);if(!e)return;
-    ev.preventDefault();const p=pointToSlot(ev.clientX,ev.clientY);
-    drag={mode:ev.target.classList.contains('rz')?'resize':'move',e,orig:{day:e.day,start:e.start,end:e.end},grab:p.min-e.start,x:ev.clientX,y:ev.clientY,moved:false};
-    commit();
-  }else if(col){
-    ev.preventDefault();const p=pointToSlot(ev.clientX,ev.clientY);const st=Math.floor(p.min/15)*15;
-    const e={id:nid(),day:+col.dataset.day,start:st,end:st+15,title:'',area:brush,_ghost:true};
-    commit();S.events.push(e);drag={mode:'create',e,anchor:st,x:ev.clientX,y:ev.clientY,moved:false};selected=null;renderCal();
+  if(!node&&!col)return;
+  const info={x:ev.clientX,y:ev.clientY,rz:ev.target.classList.contains('rz')};
+  if(ev.pointerType==='touch'){
+    if(lp)clearTimeout(lp.t);
+    /* el calendario se redibuja al empezar a arrastrar: el bloqueo del desplazamiento va en el propio elemento tocado, que sigue recibiendo los eventos aunque ya no esté en la página */
+    const tgt=ev.target,hm=e=>{if(touchLock&&e.cancelable)e.preventDefault()};
+    tgt.addEventListener('touchmove',hm,{passive:false});tgt.addEventListener('touchend',()=>tgt.removeEventListener('touchmove',hm),{once:true});tgt.addEventListener('touchcancel',()=>tgt.removeEventListener('touchmove',hm),{once:true});
+    lp={x:ev.clientX,y:ev.clientY,node,t:setTimeout(()=>{lp=null;touchLock=true;try{if(navigator.vibrate)navigator.vibrate(12)}catch(e){}begin(info,node,col)},350)};
+    return;
   }
+  ev.preventDefault();begin(info,node,col);
 });
+document.addEventListener('touchmove',e=>{if(touchLock&&e.cancelable)e.preventDefault()},{passive:false});
+function cancelPress(){if(lp){clearTimeout(lp.t);lp=null}touchLock=false}
+window.addEventListener('pointercancel',()=>{cancelPress();if(drag&&drag.mode==='create'){const e=drag.e;S.events=S.events.filter(x=>x!==e);hist.pop();drag=null;renderCal()}else if(drag){drag=null}});
 window.addEventListener('pointermove',ev=>{
+  if(lp&&Math.hypot(ev.clientX-lp.x,ev.clientY-lp.y)>10){clearTimeout(lp.t);lp=null}
   if(!drag)return;
   if(Math.abs(ev.clientX-drag.x)+Math.abs(ev.clientY-drag.y)>4)drag.moved=true;
   if(!drag.moved)return;
@@ -707,6 +727,8 @@ window.addEventListener('pointermove',ev=>{
   renderCal();
 });
 window.addEventListener('pointerup',()=>{
+  touchLock=false;
+  if(lp){clearTimeout(lp.t);const l=lp;lp=null;if(l.node){const e=S.events.find(x=>x.id===l.node.dataset.id);if(e){selected=e.id;renderCal();openEditor(e,false)}}return}
   if(!drag)return;const d=drag;drag=null;const e=d.e;
   if(d.mode==='create'){
     delete e._ghost;if(!d.moved||e.end-e.start<30)e.end=Math.min(1440,e.start+60);
@@ -1263,6 +1285,7 @@ $('#c-go').addEventListener('click',()=>{
   imp={app:null,i:0};drawImp();$('#c-form').hidden=true;$('#c-done').hidden=false;$('#c-close').focus();
 });
 
+if(matchMedia('(pointer:coarse)').matches){const bs=document.querySelector('.brand small');if(bs)bs.textContent='Mantén pulsado en la cuadrícula y arrastra para crear un bloque.'}
 /* ---------- teclado ---------- */
 document.addEventListener('keydown',ev=>{
   const typing=/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName);
