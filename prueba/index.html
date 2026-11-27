@@ -448,6 +448,8 @@ input[type=range]{width:100%;accent-color:var(--ink)}
 
     <section class="sec">
       <div class="withq"><button class="btn primary" id="pdf" type="button">Exportar PDF</button><button class="q" type="button" data-help="pdf" aria-label="Cómo funciona: el PDF" aria-expanded="false">?</button></div>
+      <div class="withq"><div class="row" style="flex:1;flex-wrap:nowrap;gap:6px"><button class="btn" id="img-copy" type="button" style="flex:1">Copiar imagen</button><button class="btn" id="img-save" type="button" style="flex:1">Descargar imagen</button></div><button class="q" type="button" data-help="imagen" aria-label="Cómo funciona: la imagen" aria-expanded="false">?</button></div>
+      <p class="hint" id="img-msg" role="status" hidden></p>
       <div class="withq tipwrap only-m-hide"><button class="btn" id="open-cal" type="button" aria-describedby="tip-cal"><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M2 6.5h12M5.5 1.8v2.4M10.5 1.8v2.4"/></svg>Exportar a mi app de calendario</button><button class="q" type="button" data-help="ics" aria-label="Cómo funciona: exportar a mi app de calendario" aria-expanded="false">?</button>
         <div class="tip" id="tip-cal" role="tooltip">Se descarga un archivo <b>.ics</b>, el formato estándar de calendario. Lo abren:<ul><li>Google Calendar</li><li>Apple Calendario</li><li>Microsoft Outlook</li><li>Proton Calendar</li><li>Thunderbird</li></ul>y cualquier app que importe archivos .ics.<small>Los nombres son marcas de sus titulares. Esta herramienta no tiene relación con ellas.</small></div></div>
     </section>
@@ -490,7 +492,7 @@ input[type=range]{width:100%;accent-color:var(--ink)}
     </section>
 
     <p class="privacy">La semana no se guarda: al cerrar o recargar la pestaña, se borra. Expórtala antes de cerrar. Sin nombres ni datos clínicos dentro.</p>
-    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v7.0, 24 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
+    <p class="privacy" style="border:0;padding-top:0;margin-top:0">Versión de prueba (v7.1, 27 nov). Si algo no se entiende o no funciona, cuéntaselo a Fer.</p>
     <div class="fb"><span>¿Tienes ideas para mejorarlo? Cuéntamelas.</span><a class="btn" id="fb-btn" href="https://ig.me/m/psicofersaras" target="_blank" rel="noopener noreferrer">Dar feedback</a></div>
   </aside>
 
@@ -956,7 +958,22 @@ function openEditor(e,nw){
 function closeEditor(){$('#scrim').hidden=true;editing=null}
 function cancelEditor(){if(isNew&&editing){S.events=S.events.filter(x=>x!==editing);hist.pop();selected=null}closeEditor();renderCal();renderLegend()}
 function resetDel(){const w=$('#e-del-wrap');w.innerHTML='';const b=el('button','btn ghost','Eliminar');b.type='button';b.addEventListener('click',askDel);w.appendChild(b)}
-function askDel(){const w=$('#e-del-wrap');w.innerHTML='';const c=el('div','confirm');c.append(el('span',null,'¿Eliminar este bloque?'));const y=el('button','btn','Sí, eliminar');y.type='button';y.addEventListener('click',()=>{if(!isNew)commit();S.events=S.events.filter(x=>x!==editing);selected=null;closeEditor();renderCal();renderLegend()});const n=el('button','btn ghost','No');n.type='button';n.addEventListener('click',resetDel);c.append(y,n);w.appendChild(c)}
+function sameBlocks(e){
+  const n=t=>(t||'').trim().toLowerCase();
+  return S.events.filter(x=>x!==e&&x.area===e.area&&n(x.title)===n(e.title)&&(n(e.title)||(x.start===e.start&&x.end===e.end)));
+}
+function askDel(){
+  const w=$('#e-del-wrap');w.innerHTML='';const c=el('div','confirm');c.style.flexWrap='wrap';
+  const e=editing,others=isNew?[]:sameBlocks(e);
+  const drop=list=>{if(!isNew)commit();const out=new Set(list);S.events=S.events.filter(x=>!out.has(x));selected=null;closeEditor();renderCal();renderLegend()};
+  const btn=(t,cls,fn)=>{const b=el('button',cls,t);b.type='button';b.addEventListener('click',fn);return b};
+  if(others.length){
+    const all=[e,...others],name=e.title||area(e.area).name||'bloque';
+    const t=el('span',null,'«'+name+'» está '+all.length+' veces: '+dayList(uniq(all.map(x=>x.day))).toLowerCase()+'.');t.style.flexBasis='100%';
+    c.append(t,btn('Quitar las '+all.length,'btn',()=>drop(all)),btn('Solo esta','btn',()=>drop([e])),btn('No','btn ghost',resetDel));
+  }else c.append(el('span',null,'¿Eliminar este bloque?'),btn('Sí, eliminar','btn',()=>drop([e])),btn('No','btn ghost',resetDel));
+  w.appendChild(c);
+}
 function saveEditor(){
   const e=editing;if(!e)return;if(!isNew)commit();
   let st=parseT($('#e-start').value),en=parseT($('#e-end').value);
@@ -1491,6 +1508,72 @@ $('#save-palette').addEventListener('click',()=>{let n=1;while(allPalettes()['Mi
 $('#add-area').addEventListener('click',()=>{commit();const last=S.areas[S.areas.length-1];const hue=((last?hexToHsl(last.color)[0]:Math.random()*360)+137.508)%360;const a={id:nid(),name:'Nueva área',color:hslToHex(hue,55,46),locked:false};S.areas.push(a);brush=a.id;renderAll();const ins=document.querySelectorAll('#areas .name');const l=ins[ins.length-1];if(l){l.focus();l.select()}});
 $('#undo').addEventListener('click',undo);
 $('#pdf').addEventListener('click',()=>window.print());
+
+/* ---------- imagen de la semana (se dibuja aquí, sin salir del aparato) ---------- */
+function weekCanvas(){
+  const W=1123,H=794,K=2,c=document.createElement('canvas');c.width=W*K;c.height=H*K;
+  const g=c.getContext('2d');g.scale(K,K);g.textBaseline='top';
+  const ink='#1E2A44',muted='#6A7389',line='#ECE6DC',F=(w,px,f)=>w+' '+px+'px '+(f||'Inter, sans-serif');
+  const box=(x,y,w,h,r)=>{r=Math.max(0,Math.min(r,w/2,h/2));g.beginPath();g.moveTo(x+r,y);g.arcTo(x+w,y,x+w,y+h,r);g.arcTo(x+w,y+h,x,y+h,r);g.arcTo(x,y+h,x,y,r);g.arcTo(x,y,x+w,y,r);g.closePath()};
+  const cut=(t,w)=>{if(g.measureText(t).width<=w)return t;while(t&&g.measureText(t+'…').width>w)t=t.slice(0,-1);return t?t+'…':''};
+  const wrap=(t,w,n)=>{const out=[];let cur='';const words=t.split(/\s+/).filter(Boolean);
+    for(let i=0;i<words.length;i++){const next=cur?cur+' '+words[i]:words[i];
+      if(g.measureText(next).width<=w){cur=next;continue}
+      if(cur&&out.length<n-1){out.push(cur);cur=words[i];continue}
+      cur=next+(i<words.length-1?' '+words.slice(i+1).join(' '):'');break}
+    if(cur)out.push(cut(cur,w));return out};
+  g.fillStyle='#FFFFFF';g.fillRect(0,0,W,H);
+  const M=28;
+  g.fillStyle=ink;g.font=F(600,24,'Fraunces, Georgia, serif');g.fillText(cut(S.title||'Mi semana',360),M,M-4);
+  /* leyenda, alineada a la derecha y en las líneas que haga falta */
+  const used=new Set(S.events.map(e=>e.area));g.font=F(400,11.5);
+  const items=S.areas.filter(a=>used.has(a.id)).map(a=>({a,n:a.name||'Sin nombre'}));items.forEach(i=>i.w=g.measureText(i.n).width+16);
+  const rows=[[]];let rw=0;items.forEach(i=>{if(rw+i.w>660&&rw){rows.push([]);rw=0}rows[rows.length-1].push(i);rw+=i.w+14});
+  rows.forEach((r,k)=>{let x=W-M-r.reduce((t,i)=>t+i.w+14,-14);const y=M+k*18;r.forEach(i=>{g.fillStyle=i.a.color;box(x,y+1,11,11,3);g.fill();g.fillStyle=ink;g.fillText(i.n,x+16,y+1);x+=i.w+14})});
+  const nd=S.days,from=S.from*60,to=Math.max(S.to,S.from+1)*60;
+  const x0=M+40,top=M+Math.max(38,rows.length*18+14),gy=top+24,gh=H-gy-34,cw=(W-M-x0)/nd,ppm=gh/(to-from);
+  g.strokeStyle=line;g.lineWidth=1;
+  g.font=F(400,10.5);g.fillStyle=muted;g.textAlign='right';
+  for(let m=from;m<=to;m+=60){const y=gy+(m-from)*ppm;g.beginPath();g.moveTo(x0,y);g.lineTo(W-M,y);g.stroke();g.fillText(fmtEnd(m),x0-7,y-5)}
+  g.textAlign='center';g.font=F(600,12);g.fillStyle=ink;
+  for(let d=0;d<=nd;d++){const x=x0+d*cw;g.beginPath();g.moveTo(x,top);g.lineTo(x,gy+gh);g.stroke();if(d<nd)g.fillText(DAYS[d],x+cw/2,top+5)}
+  g.textAlign='left';
+  for(let d=0;d<nd;d++){
+    const evs=S.events.filter(e=>e.day===d&&e.end>from&&e.start<to);layout(evs);
+    evs.forEach(e=>{
+      const a=area(e.area),st=Math.max(e.start,from),en=Math.min(e.end,to);
+      const w=cw/e._n-4,x=x0+d*cw+e._c*cw/e._n+2,y=gy+(st-from)*ppm+1,h=Math.max((en-st)*ppm-2,3);
+      g.fillStyle=a.color;box(x,y,w,h,5);g.fill();g.strokeStyle=edge(a.color);g.stroke();
+      if(h<6)return;
+      g.save();box(x,y,w,h,5);g.clip();g.fillStyle=textOn(a.color);
+      const small=h<18,px=small?Math.max(7.5,Math.min(11,h-2)):11,lh=px+2,withH=S.showTimes&&h>=30;
+      g.font=F(600,px);
+      const lines=wrap(e.title||a.name||'',w-10,Math.max(1,Math.floor((h-6-(withH?12:0))/lh)));
+      const ty=small?y+(h-px)/2:y+4;
+      lines.forEach((t,i)=>g.fillText(t,x+5,ty+i*lh));
+      if(withH){g.font=F(400,9.5);g.fillText(cut(fmt(e.start)+'–'+fmtEnd(e.end),w-10),x+5,ty+lines.length*lh+1)}
+      g.restore();
+    });
+  }
+  g.fillStyle='#A85128';g.globalAlpha=.6;g.font=F(600,11);g.textAlign='right';g.fillText('@psicofersaras',W-M,H-24);g.globalAlpha=1;
+  return c;
+}
+async function weekPNG(){
+  try{await Promise.all([document.fonts.load('600 24px Fraunces'),document.fonts.load('400 11px Inter'),document.fonts.load('600 11px Inter')])}catch(e){}
+  return new Promise((ok,no)=>weekCanvas().toBlob(b=>b?ok(b):no(new Error('sin imagen')),'image/png'));
+}
+function imgMsg(t){const m=$('#img-msg');m.textContent=t;m.hidden=!t}
+$('#img-save').addEventListener('click',async()=>{
+  if(!S.events.length){imgMsg('La semana está en blanco: no hay nada que exportar.');return}
+  try{const u=URL.createObjectURL(await weekPNG()),a=el('a');a.href=u;a.download='mi-semana.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000);imgMsg('Imagen descargada: mi-semana.png.')}
+  catch(e){imgMsg('No se ha podido crear la imagen en este navegador.')}
+});
+$('#img-copy').addEventListener('click',()=>{
+  if(!S.events.length){imgMsg('La semana está en blanco: no hay nada que exportar.');return}
+  const fail=()=>imgMsg('Este navegador no deja copiar la imagen. Usa «Descargar imagen».');
+  /* el portapapeles se pide en el mismo toque (Safari lo exige) y recibe la imagen después */
+  try{navigator.clipboard.write([new ClipboardItem({'image/png':weekPNG()})]).then(()=>imgMsg('Imagen copiada. Pégala donde la necesites.'),fail)}catch(e){fail()}
+});
 function resetClear(){const w=$('#clear-wrap');w.innerHTML='';const b=el('button','btn ghost wide','Vaciar la semana');b.type='button';b.addEventListener('click',askClear);w.appendChild(b)}
 function askClear(){const w=$('#clear-wrap');w.innerHTML='';const c=el('div','confirm');c.append(el('span',null,'¿Borrar todos los bloques?'));const y=el('button','btn','Sí, vaciar');y.type='button';y.addEventListener('click',()=>{commit();S.events=[];S.pend=[];S.okc=[];selected=null;resetClear();renderAll()});const n=el('button','btn ghost','No');n.type='button';n.addEventListener('click',resetClear);c.append(y,n);w.appendChild(c)}
 $('#clear').addEventListener('click',askClear);
@@ -1512,6 +1595,7 @@ const HELP={
  aleatorios:['Colores aleatorios','Prueba una combinación nueva cada vez que lo pulsas. Las áreas con candado no cambian. Si no te gusta, «Deshacer».'],
  guardarpaleta:['Guardar estos colores','Guarda los colores que tienes ahora como una paleta con nombre. Se queda en este navegador, aunque la semana se borre. Para borrarla, pulsa la X de su recuadro, en «Mis paletas».'],
  vista:['Vista','Elige las horas que se ven, si quieres el fin de semana y lo alta que es cada hora. No borra nada: los bloques fuera de la vista siguen ahí.'],
+ imagen:['Imagen de la semana','«Copiar imagen» la deja lista para pegar en otro programa. «Descargar imagen» guarda un archivo PNG en tu equipo.'],
  pdf:['Exportar PDF','Abre la ventana de imprimir. En destino, elige «Guardar como PDF». Sale en una hoja A4 apaisada.'],
  ics:['Exportar a mi app de calendario','Descarga un archivo .ics con tu semana, el formato estándar de calendario. Lo abren Google Calendar, Apple Calendario, Microsoft Outlook, Proton Calendar y Thunderbird. Al descargarlo te explico los pasos, uno a uno.','Es una copia: si luego cambias algo aquí, hay que exportarlo otra vez.'],
  deshacer:['Deshacer y ver ejemplo','«Deshacer» vuelve un paso atrás (también con Cmd o Ctrl + Z). «Ver ejemplo» cambia lo que haya por una semana de muestra; se puede deshacer.'],
@@ -1544,7 +1628,7 @@ const pad=n=>String(n).padStart(2,'0');
 const isoDate=d=>d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate());
 const mondayOf=d=>{const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());x.setDate(x.getDate()-(x.getDay()+6)%7);return x};
 const icsStamp=(base,days,min)=>{const x=new Date(base.getFullYear(),base.getMonth(),base.getDate()+days+Math.floor(min/1440));const m=min%1440;return x.getFullYear()+pad(x.getMonth()+1)+pad(x.getDate())+'T'+pad(Math.floor(m/60))+pad(m%60)+'00'};
-const icsEsc=s=>String(s).replace(/\\/g,'\\\\').replace(/;/g,'\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n');
+const icsEsc=s=>String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n');
 function icsFold(line){const enc=new TextEncoder();let out='',cur='',n=0;for(const ch of line){const b=enc.encode(ch).length;if(n+b>74){out+=cur+'\r\n ';cur='';n=1}cur+=ch;n+=b}return out+cur}
 const VTZ={
  'Europe/Madrid':['+0100','+0200','CET','CEST','030000','020000'],
